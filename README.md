@@ -4,5 +4,5 @@ Para hacerte la recomendacion te hace una serie de preguntas y te dice a quien v
 
 Necesitamos:
 
-* Definir cuales son las preguntas que vamos a hacer
+* Definir cuales son las preguntas que vamos a hacer (preguntas.md)
 * Tener un set de datos inicial de respuestas con el candidato ya seleccionado.
