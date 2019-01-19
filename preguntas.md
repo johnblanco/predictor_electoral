@@ -1,0 +1,3 @@
+Aca definimos las preguntas que vamos a hacer...
+
+Nos inspiramos en las que hay en https://www.politicalcompass.org/test/es ?
