@@ -1,7 +1,11 @@
 Una pequeña web que te recomienda un candidato de acuerdo a tus preferencias. 
 
-Para hacerte la recomendacion te hace una serie de preguntas y te dice a quien votan los que contestan mas parecido a vos.
+Te hace una serie de preguntas y te dice a quien votan los que contestan mas parecido a vos.
 
+---
+Para correr: export FLASK_APP=app.py;flask run
+
+---
 Necesitamos:
 
 * Definir cuales son las preguntas que vamos a hacer: https://docs.google.com/spreadsheets/d/1ZIsLgGRemBtJGdmAeRpHFvFq4hxuOVhnxyxCUvDdL38/edit#gid=0
