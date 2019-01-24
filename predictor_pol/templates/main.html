@@ -14,7 +14,7 @@
 <form method="post" action="/">
     <label>A que candidato votarias?</label>
 
-    <select name="candidato">
+    <select required name="candidato">
         {% for c in candidatos %}
             <option value="{{loop.index}}">{{c}}</option>
         {% endfor %}
@@ -24,25 +24,25 @@
     <p>{{p}}</p>
     <label>
         <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="0">
+        <input name="pregunta_{{loop.index}}" type="radio" value="0" required>
         Totalmente en desacuerdo
         </span>
     </label>
     <label>
         <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="1">
+        <input name="pregunta_{{loop.index}}" type="radio" value="1" required>
         En desacuerdo
         </span>
     </label>
     <label>
         <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="2">
+        <input name="pregunta_{{loop.index}}" type="radio" value="2" required>
         De acuerdo
         </span>
     </label>
     <label>
         <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="3">
+        <input name="pregunta_{{loop.index}}" type="radio" value="3" required>
         Totalmente de acuerdo
         </span>
     </label>
