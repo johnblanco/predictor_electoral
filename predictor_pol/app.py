@@ -1,9 +1,10 @@
-#para correr: export FLASK_APP=app.py;flask run
+# para correr: export FLASK_APP=app.py;flask run
 
 from flask import Flask, render_template, request
 import joblib
 import pandas as pd
-
+import sqlite3
+from flask import g
 
 app = Flask(__name__)
 
@@ -14,12 +15,28 @@ valid_keys = {
     *('pregunta_' + str(i) for i in range(1, len(preguntas)))
 }
 
+DATABASE = 'predictor.db'
 
-@app.route('/', methods = ['GET', 'POST'])
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
+    return db
+
+
+@app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
         if validate(request.form):
-            print(request.form)
+            save_response(request.form)
             # Esto habría que reemplazar por un render_template
             return 'Gracias por contestar!'
         else:
@@ -37,3 +54,20 @@ def predict(responses):
     xgb = joblib.load('xg_model')
     df_test = pd.DataFrame.from_dict({'resp1': [1], 'resp2': [1]})
     print(xgb.predict(df_test))
+
+
+def save_response(form):
+    cur = get_db().cursor()
+    candidato = form['candidato']
+    sql = "insert into encuestas('candidato_elegido') values(?);"
+    res = cur.execute(sql, (candidato))
+    id_encuesta = int(res.lastrowid)
+
+    sql = "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') values(?,?,?);"
+    id_pregunta = 1
+
+    respuesta = int(form['pregunta_1'])
+
+    print("resp {}".format(respuesta))
+    res = cur.execute(sql, (id_encuesta, id_pregunta, respuesta))
+    print(res.lastrowid)
