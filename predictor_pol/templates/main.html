@@ -5,7 +5,6 @@
 
     <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" /> <!-- nes style framework -->
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> <!-- fuente -->
-    <link href="style.css" rel="stylesheet">
 
     <style>
     	body{
@@ -28,7 +27,7 @@
 <h1>Recomendacion de candidato a partir de tus preferencias</h1>
 <p>A quien votan los que piensan mas parecido a vos?</p>
 
-<div class="nes-container is-dark"><p>El modelo necesita mas datos para empezar a hacer predicciones.
+<div class="nes-container is-dark"><p>El modelo necesita más datos para empezar a hacer predicciones.
     Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</p></div>
 
 <form method="post" action="/">
@@ -69,10 +68,14 @@
         Totalmente de acuerdo
         </span>
     </label>
-	</div>	
+	</div>
     {% endfor %}
 
-    <p><input type="submit" value="Enviar" class="nes-btn is-success"></p>
+    <p>
+        <input type="submit" value="Enviar" class="nes-btn is-success">
+        <input type="reset" value="Borrar" class="nes-btn is-error">
+    </p>
+
 </form>
 
 </body>

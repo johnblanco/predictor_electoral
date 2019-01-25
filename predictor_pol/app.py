@@ -8,7 +8,7 @@ from flask import g
 
 app = Flask(__name__)
 
-PREGUNTAS = ['Pregunta 1', 'Pregunta 2']
+PREGUNTAS = open('preguntas.txt').read().split("\n")
 CANDIDATOS = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
 
 DATABASE = 'predictor.db'
