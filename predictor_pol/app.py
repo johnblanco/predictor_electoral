@@ -12,7 +12,7 @@ preguntas = ['Pregunta 1', 'Pregunta 2']
 candidatos = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
 valid_keys = {
     'candidato',
-    *('pregunta_' + str(i) for i in range(1, len(preguntas)))
+    *('pregunta_{}'.format(i + 1) for i, _ in enumerate(preguntas))
 }
 
 DATABASE = 'predictor.db'
@@ -63,11 +63,14 @@ def save_response(form):
     res = cur.execute(sql, (candidato))
     id_encuesta = int(res.lastrowid)
 
-    sql = "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') values(?,?,?);"
-    id_pregunta = 1
+    for index, _ in enumerate(preguntas):
+        id_pregunta = index + 1
+        respuesta = int(form['pregunta_{}'.format(id_pregunta)])
 
-    respuesta = int(form['pregunta_1'])
-
-    print("resp {}".format(respuesta))
-    res = cur.execute(sql, (id_encuesta, id_pregunta, respuesta))
-    print(res.lastrowid)
+        print("resp {}".format(respuesta))
+        sql = (
+            "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') "
+            "values(?,?,?);"
+        )
+        res = cur.execute(sql, (id_encuesta, id_pregunta, respuesta))
+        print(res.lastrowid)
