@@ -10,10 +10,6 @@ app = Flask(__name__)
 
 PREGUNTAS = ['Pregunta 1', 'Pregunta 2']
 CANDIDATOS = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
-VALID_KEYS = {
-    'candidato',
-    *('pregunta_{}'.format(i + 1) for i, _ in enumerate(PREGUNTAS))
-}
 
 DATABASE = 'predictor.db'
 
@@ -49,7 +45,11 @@ def main():
 
 
 def validate(form):
-    return all(form.get(key, '').isdecimal() for key in VALID_KEYS)
+    valid_keys = {
+        'candidato',
+        *_get_question_keys(PREGUNTAS)
+    }
+    return all(form.get(key, '').isdecimal() for key in valid_keys)
 
 
 def predict(responses):
@@ -65,14 +65,17 @@ def save_response(form):
     res = cur.execute(sql, (candidato))
     id_encuesta = int(res.lastrowid)
 
-    for index, _ in enumerate(PREGUNTAS):
-        id_pregunta = index + 1
-        respuesta = int(form['pregunta_{}'.format(id_pregunta)])
+    for id_pregunta in _get_question_keys(PREGUNTAS):
+        respuesta = int(form[id_pregunta])
 
         print("resp {}".format(respuesta))
         sql = (
             "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') "
             "values(?,?,?);"
         )
-        res = cur.execute(sql, (id_encuesta, id_pregunta, respuesta))
+        res = cur.execute(sql, (id_encuesta, id_pregunta.split('_')[-1], respuesta))
         print(res.lastrowid)
+
+
+def _get_question_keys(questions):
+    return ['pregunta_{}'.format(i + 1) for i, _ in enumerate(questions)]
