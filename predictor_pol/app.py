@@ -8,11 +8,11 @@ from flask import g
 
 app = Flask(__name__)
 
-preguntas = ['Pregunta 1', 'Pregunta 2']
-candidatos = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
-valid_keys = {
+PREGUNTAS = ['Pregunta 1', 'Pregunta 2']
+CANDIDATOS = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
+VALID_KEYS = {
     'candidato',
-    *('pregunta_{}'.format(i + 1) for i, _ in enumerate(preguntas))
+    *('pregunta_{}'.format(i + 1) for i, _ in enumerate(PREGUNTAS))
 }
 
 DATABASE = 'predictor.db'
@@ -43,11 +43,13 @@ def main():
             # Esto también
             return 'Error'
 
-    return render_template('main.html', preguntas=preguntas, candidatos=candidatos)
+    return render_template(
+        'main.html', preguntas=PREGUNTAS, candidatos=CANDIDATOS
+    )
 
 
 def validate(form):
-    return all(form.get(key, '').isdecimal() for key in valid_keys)
+    return all(form.get(key, '').isdecimal() for key in VALID_KEYS)
 
 
 def predict(responses):
@@ -63,7 +65,7 @@ def save_response(form):
     res = cur.execute(sql, (candidato))
     id_encuesta = int(res.lastrowid)
 
-    for index, _ in enumerate(preguntas):
+    for index, _ in enumerate(PREGUNTAS):
         id_pregunta = index + 1
         respuesta = int(form['pregunta_{}'.format(id_pregunta)])
 
