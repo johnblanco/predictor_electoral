@@ -8,12 +8,8 @@ from flask import g
 
 app = Flask(__name__)
 
-preguntas = ['Pregunta 1', 'Pregunta 2']
-candidatos = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
-valid_keys = {
-    'candidato',
-    *('pregunta_' + str(i) for i in range(1, len(preguntas)))
-}
+PREGUNTAS = ['Pregunta 1', 'Pregunta 2']
+CANDIDATOS = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
 
 DATABASE = 'predictor.db'
 
@@ -43,10 +39,16 @@ def main():
             # Esto también
             return 'Error'
 
-    return render_template('main.html', preguntas=preguntas, candidatos=candidatos)
+    return render_template(
+        'main.html', preguntas=PREGUNTAS, candidatos=CANDIDATOS
+    )
 
 
 def validate(form):
+    valid_keys = {
+        'candidato',
+        *_get_question_keys(PREGUNTAS)
+    }
     return all(form.get(key, '').isdecimal() for key in valid_keys)
 
 
@@ -63,11 +65,17 @@ def save_response(form):
     res = cur.execute(sql, (candidato))
     id_encuesta = int(res.lastrowid)
 
-    sql = "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') values(?,?,?);"
-    id_pregunta = 1
+    for id_pregunta in _get_question_keys(PREGUNTAS):
+        respuesta = int(form[id_pregunta])
 
-    respuesta = int(form['pregunta_1'])
+        print("resp {}".format(respuesta))
+        sql = (
+            "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') "
+            "values(?,?,?);"
+        )
+        res = cur.execute(sql, (id_encuesta, id_pregunta.split('_')[-1], respuesta))
+        print(res.lastrowid)
 
-    print("resp {}".format(respuesta))
-    res = cur.execute(sql, (id_encuesta, id_pregunta, respuesta))
-    print(res.lastrowid)
+
+def _get_question_keys(questions):
+    return ['pregunta_{}'.format(i + 1) for i, _ in enumerate(questions)]
