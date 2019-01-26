@@ -8,8 +8,11 @@ from flask import g
 
 app = Flask(__name__)
 
-PREGUNTAS = open('preguntas.txt').read().split("\n")
-CANDIDATOS = ['Candidato 1', 'Candidato 2', 'Juan Sartori (aka u/nano2412)']
+with open('preguntas.txt') as f:
+    PREGUNTAS = f.read().split("\n")
+
+with open('candidatos.txt') as f:
+    CANDIDATOS = f.read().split("\n")
 
 DATABASE = 'predictor.db'
 
@@ -34,7 +37,7 @@ def main():
         if validate(request.form):
             save_response(request.form)
             # Esto habría que reemplazar por un render_template
-            return 'Gracias por contestar!'
+            return '¡Gracias por contestar!'
         else:
             # Esto también
             return 'Error'
@@ -60,9 +63,9 @@ def predict(responses):
 
 def save_response(form):
     cur = get_db().cursor()
-    candidato = form['candidato']
+    candidato = int(form['candidato'])
     sql = "insert into encuestas('candidato_elegido') values(?);"
-    res = cur.execute(sql, (candidato))
+    res = cur.execute(sql, (candidato,))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):
