@@ -63,9 +63,9 @@ def predict(responses):
 
 def save_response(form):
     cur = get_db().cursor()
-    candidato = form['candidato']
+    candidato = int(form['candidato'])
     sql = "insert into encuestas('candidato_elegido') values(?);"
-    res = cur.execute(sql, (candidato))
+    res = cur.execute(sql, (candidato,))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):
