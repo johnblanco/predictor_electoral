@@ -24,22 +24,32 @@
 </head>
 <body>
 
-<h1>Recomendacion de candidato a partir de tus preferencias</h1>
-<p>A quien votan los que piensan mas parecido a vos?</p>
+<h1>Recomendación de candidato a partir de tus preferencias</h1>
+<p>A quien votan los que piensan más parecido a vos?</p>
 
-<div class="nes-container is-dark"><p>El modelo necesita más datos para empezar a hacer predicciones.
+{% if modelo_listo %}
+<div class="nes-container is-dark">
+    <p>Contesta las siguientes preguntas y te sugerimos un candidato.
+    </p>
+</div>
+{% else %}
+<div class="nes-container is-dark"><p>El modelo necesita más datos dar recomendaciones.
     Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</p></div>
+{% endif %}
+
 
 <form method="post" action="/">
 	<div class="nes-container with-title">
     <label class="title">A que candidato votarias?</label>
 
+    {% if not modelo_listo %}
     <select required name="candidato">
         {% for c in candidatos %}
             <option value="{{loop.index}}">{{c}}</option>
         {% endfor %}
     </select>
 	</div>
+    {% endif %}
 
     {% for p in preguntas %}
     <div class="nes-container with-title">
@@ -72,8 +82,8 @@
     {% endfor %}
 
     <p>
-        <input type="submit" value="Enviar" class="nes-btn is-success">
-        <input type="reset" value="Borrar" class="nes-btn is-error">
+        <input type="submit" value="Guardar" class="nes-btn is-success">
+        <input type="reset" value="Cancelar" class="nes-btn is-error">
     </p>
 
 </form>
