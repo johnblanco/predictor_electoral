@@ -29,7 +29,7 @@
 
 <form method="post" action="/">
 	<div class="pregunta">
-    <label>A que candidato votarias?</label>
+    <label><h3>A que candidato votarias?</h3></label>
 
     {% if not modelo_listo %}
     <select required name="candidato">
@@ -70,9 +70,9 @@
 	</div>
     {% endfor %}
 
-    <div>
-        <input type="submit" value="Enviar" class="btn btn-primary">
-        <input type="reset" value="Borrar" class="btn btn-danger">
+    <div class="botones">
+        <input type="submit" value="Enviar" class="btn btn-primary btn-lg">
+        <input type="reset" value="Borrar" class="btn btn-danger btn-lg">
     </div>
 
 </form>
