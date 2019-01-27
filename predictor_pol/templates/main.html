@@ -20,14 +20,16 @@
     <h2>Contesta las siguientes preguntas y te sugerimos un candidato.</h2>
 </div>
 {% else %}
-<div class="msg-inicial"><h2>El modelo necesita más datos para dar recomendaciones.
-    Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</h2></div>
+<div class="msg-inicial">
+	<h2>El modelo necesita más datos para dar recomendaciones.
+    Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</h2>
+</div>
 {% endif %}
 
 
 <form method="post" action="/">
-	<div class="nes-container with-title">
-    <label class="title">A que candidato votarias?</label>
+	<div class="pregunta">
+    <label>A que candidato votarias?</label>
 
     {% if not modelo_listo %}
     <select required name="candidato">
@@ -39,8 +41,8 @@
     {% endif %}
 
     {% for p in preguntas %}
-    <div class="nes-container with-title">
-    <h2 class="title">{{p}}</h2>
+    <div class="pregunta">
+    <h3>{{p}}</h3>
     <label>
         <span>
         <input name="pregunta_{{loop.index}}" type="radio" value="0" required>

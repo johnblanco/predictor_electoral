@@ -3,7 +3,7 @@ h1,h2{
 }
 
 .msg-inicial{
-	padding: 5% 0% 5% 0%;
+	padding: 5% 2% 5% 2%;
 	background-color: #5894C2;
 	margin-top: 2%;
 }
@@ -12,3 +12,16 @@ hr{
 	width: 50%;
 	background-color: gold;
 }
+
+.pregunta{
+	margin: 2% 2% 2% 2%;
+	padding-left: 2%;
+	border-style: solid;
+	border-color: gold;
+	border-radius: 5px;
+}
+
+.pregunta:nth-child(even){
+	background-color: #B2D5EF;
+}
+
