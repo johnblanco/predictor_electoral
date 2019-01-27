@@ -6,8 +6,7 @@ import json
 import pandas as pd
 import sqlite3
 
-from flask import g
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
 
