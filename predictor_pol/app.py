@@ -2,6 +2,7 @@
 
 import datetime
 import joblib
+import json
 import pandas as pd
 import sqlite3
 
@@ -10,11 +11,19 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-with open('preguntas.txt') as f:
-    PREGUNTAS = f.read().split("\n")
+with open('preguntas.json') as f:
+    PREGUNTAS = [
+        question
+        for category in json.load(f)
+        for question in category['questions']
+    ]
 
-with open('candidatos.txt') as f:
-    CANDIDATOS = f.read().split("\n")
+with open('candidatos.json') as f:
+    CANDIDATOS = [
+        candidate
+        for pol_party in json.load(f)
+        for candidate in pol_party['candidates']
+    ]
 
 DATABASE = 'predictor.db'
 MODELO_LISTO = False
