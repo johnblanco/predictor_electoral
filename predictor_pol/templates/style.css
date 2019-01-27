@@ -1,0 +1,14 @@
+h1,h2{
+	text-align: center;
+}
+
+.msg-inicial{
+	padding: 5% 0% 5% 0%;
+	background-color: #5894C2;
+	margin-top: 2%;
+}
+
+hr{
+	width: 50%;
+	background-color: gold;
+}
