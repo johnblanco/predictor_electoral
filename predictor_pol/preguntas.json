@@ -13,7 +13,7 @@
             "Los ricos pagan impuestos demasiado elevados.",
             "El gobierno no debe proteger la industria nacional, si las fábricas no son competitivas esta bien que desaparezcan.",
             "La ley de inclusión financiera es positiva para la sociedad.",
-            "Los sindicatos tienen demasiado poder.",
+            "Algunos sindicatos tienen demasiado poder.",
             "Cuanto más libre es el mercado, más libre es la gente.",
 						"El campo es y debe ser el motor productivo de Uruguay.",
             "La inversión extranjera es vital para que Uruguay alcance el desarrollo.",
@@ -36,20 +36,23 @@
     {
         "subject": "seguridad",
         "questions": [
-            "Aunque la era electrónica facilita la vigilancia gubernamental, solo se tienen que preocupar los malhechores.",
+            "Con la vigilancia gubernamental (escuchas telefonicas, e-mails y camaras de seguridad) el que no tiene nada que esconder, no tiene de que preocuparse.",
             "La pena de muerte debería ser una opción para los crímenes mas serios.",
             "Uruguay debería aprobar más leyes anti corrupción y ser más duro con los culpables.",
-            "Las FF.AA. deberían tener un rol activo en la seguridad pública."
+            "Las FF.AA. deberían tener un rol activo en la seguridad pública.",
+            "Las carceles deberían ser administradas por organizaciones privadas.",
+            "Hay que aumentar el salario de los policias significativamente.",
+            "Para los delitos más graves hay que bajar la edad de imputabilidad a 16 años."
         ]
     },
     {
         "subject": "otros",
         "questions": [
             "Uruguay es demasiado generoso con los inmigrantes.",
-            "La ley trans es un buen aporte para la sociedad.",
+            "La ley trans fue un error.",
             "El feminismo moderno no busca la igualdad sino el poder.",
             "No debería existir el concepto de femicidio.",
-            "La separación de estado e iglesia me parece importante."
+            "La separación de estado y religión me parece importante."
         ]
     }
 ]
