@@ -1,0 +1,64 @@
+[
+    {
+        "name": "Frente Amplio",
+        "candidates": [
+            "Óscar Andrade",
+            "Mario Bergara",
+            "Carolina Cosse",
+            "Daniel Martínez"
+        ]
+    },
+    {
+        "name": "Partido Nacional",
+        "candidates": [
+            "Verónica Alonso",
+            "Enrique Antía",
+            "Álvaro Germano",
+            "Carlos Iafigliola",
+            "Luis Lacalle Pou",
+            "Jorge Larrañaga",
+            "Juan Sartori"
+        ]
+    },
+    {
+        "name": "Partido Colorado",
+        "candidates": [
+            "José Amorín Batlle",
+            "Pedro Etchegaray",
+            "Edgardo Martínez Zimarioff",
+            "Héctor Rovira",
+            "Julio María Sanguinetti",
+            "Ernesto Talvi"
+        ]
+    },
+    {
+        "name": "La Alternativa",
+        "candidates": [
+            "Pablo Mieres"
+        ]
+    },
+    {
+        "name": "Unidad Popular",
+        "candidates": [
+            "Gonzalo Abella"
+        ]
+    },
+    {
+        "name": "Partido de la Gente",
+        "candidates": [
+            "Edgardo Novick"
+        ]
+    },
+    {
+        "name": "Partido Ecologista Radical Intransigente",
+        "candidates": [
+            "César Vega"
+        ]
+    },
+    {
+        "name": "Partido de los Trabajadores",
+        "candidates": [
+            "Rafael Fernández"
+        ]
+    }
+]

@@ -1,19 +1,28 @@
 # para correr: export FLASK_APP=app.py;flask run
 
-from flask import Flask, render_template, request
+import datetime
 import joblib
+import json
 import pandas as pd
 import sqlite3
-from flask import g
-import datetime
+
+from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
 
-with open('preguntas.txt') as f:
-    PREGUNTAS = f.read().split("\n")
+with open('preguntas.json') as f:
+    PREGUNTAS = [
+        question
+        for category in json.load(f)
+        for question in category['questions']
+    ]
 
-with open('candidatos.txt') as f:
-    CANDIDATOS = f.read().split("\n")
+with open('candidatos.json') as f:
+    CANDIDATOS = [
+        candidate
+        for pol_party in json.load(f)
+        for candidate in pol_party['candidates']
+    ]
 
 DATABASE = 'predictor.db'
 MODELO_LISTO = False
@@ -32,6 +41,7 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
     return db
 
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -43,7 +53,10 @@ def main():
             return 'Error'
 
     return render_template(
-        'main.html', preguntas=PREGUNTAS, candidatos=CANDIDATOS, modelo_listo=MODELO_LISTO
+        'main.html',
+        preguntas=PREGUNTAS,
+        candidatos=CANDIDATOS,
+        modelo_listo=MODELO_LISTO
     )
 
 
@@ -67,16 +80,19 @@ def save_response(request):
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
     candidato = int(form['candidato'])
-    sql = "insert into encuestas('candidato_elegido','ip','fecha') values(?,?,?);"
-    res = cur.execute(sql, (candidato,ip,fecha))
+    sql = (
+        "insert into encuestas('candidato_elegido','ip','fecha')"
+        "values(?,?,?);"
+    )
+    res = cur.execute(sql, (candidato, ip, fecha))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):
         respuesta = int(form[id_pregunta])
 
         sql = (
-            "insert into respuestas_encuestas('id_encuesta','id_pregunta','respuesta') "
-            "values(?,?,?);"
+            "insert into respuestas_encuestas"
+            "('id_encuesta','id_pregunta','respuesta') values(?,?,?);"
         )
         cur.execute(sql, (id_encuesta, id_pregunta.split('_')[-1], respuesta))
 
