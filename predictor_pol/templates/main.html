@@ -3,44 +3,33 @@
 <head>
     <title>Predictor de candidato</title>
 
-    <link href="https://unpkg.com/nes.css/css/nes.min.css" rel="stylesheet" /> <!-- nes style framework -->
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet"> <!-- fuente -->
-
-    <style>
-    	body{
-			family-font: "Press Start 2P";
-			padding: 1% 10% 1% 10%;
-		}
-
-		.is-dark{
-			margin-bottom: 2%;
-		}
-
-		.nes-btn{
-			margin-top: 2%;
-		}
-	</style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" title="Default Styles">
 
 </head>
 <body>
 
-<h1>Recomendación de candidato a partir de tus preferencias</h1>
-<p>A quien votan los que piensan más parecido a vos?</p>
+<h1 class="display-3">Recomendación de candidato a partir de tus preferencias</h1>
+
+<hr>
+
+<h2 class="display-4">A quien votan los que piensan más parecido a vos?</h2>
 
 {% if modelo_listo %}
-<div class="nes-container is-dark">
-    <p>Contesta las siguientes preguntas y te sugerimos un candidato.
-    </p>
+<div class="msg-inicial">
+    <h2>Contesta las siguientes preguntas y te sugerimos un candidato.</h2>
 </div>
 {% else %}
-<div class="nes-container is-dark"><p>El modelo necesita más datos dar recomendaciones.
-    Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</p></div>
+<div class="msg-inicial">
+	<h2>El modelo necesita más datos para dar recomendaciones.
+    Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</h2>
+</div>
 {% endif %}
 
 
 <form method="post" action="/">
-	<div class="nes-container with-title">
-    <label class="title">A que candidato votarias?</label>
+	<div class="pregunta">
+    <label><h3>A que candidato votarias?</h3></label>
 
     {% if not modelo_listo %}
     <select required name="candidato">
@@ -52,8 +41,8 @@
     {% endif %}
 
     {% for p in preguntas %}
-    <div class="nes-container with-title">
-    <h2 class="title">{{p}}</h2>
+    <div class="pregunta">
+    <h3>{{p}}</h3>
     <label>
         <span>
         <input name="pregunta_{{loop.index}}" type="radio" value="0" required>
@@ -81,10 +70,10 @@
 	</div>
     {% endfor %}
 
-    <p>
-        <input type="submit" value="Guardar" class="nes-btn is-success">
-        <input type="reset" value="Cancelar" class="nes-btn is-error">
-    </p>
+    <div class="botones">
+        <input type="submit" value="Enviar" class="btn btn-primary btn-lg">
+        <input type="reset" value="Borrar" class="btn btn-danger btn-lg">
+    </div>
 
 </form>
 
