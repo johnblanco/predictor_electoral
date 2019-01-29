@@ -9,7 +9,7 @@ import os
 from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
-path = os.path.dirname(os.path.realpath(__file__))
+path = os.path.dirname(os.path.realpath(__file__)) + "/"
 
 with open(path + 'preguntas.json') as f:
     PREGUNTAS = [
