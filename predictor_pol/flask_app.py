@@ -1,15 +1,15 @@
 # para correr: export FLASK_APP=flask_app.py;flask run
 
 import datetime
-#import joblib
+import joblib
 import json
 import pandas as pd
 import sqlite3
-
+import os
 from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
-path = '~/predictor_electoral/predictor_pol/'
+path = os.path.dirname(os.path.realpath(__file__))
 
 with open(path + 'preguntas.json') as f:
     PREGUNTAS = [
