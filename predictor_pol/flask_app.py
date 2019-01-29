@@ -1,30 +1,31 @@
-# para correr: export FLASK_APP=app.py;flask run
+# para correr: export FLASK_APP=flask_app.py;flask run
 
 import datetime
 import joblib
 import json
 import pandas as pd
 import sqlite3
-
+import os
 from flask import Flask, render_template, request, g
 
 app = Flask(__name__)
+path = os.path.dirname(os.path.realpath(__file__)) + "/"
 
-with open('preguntas.json') as f:
+with open(path + 'preguntas.json') as f:
     PREGUNTAS = [
         question
         for category in json.load(f)
         for question in category['questions']
     ]
 
-with open('candidatos.json') as f:
+with open(path + 'candidatos.json') as f:
     CANDIDATOS = [
         candidate
         for pol_party in json.load(f)
         for candidate in pol_party['candidates']
     ]
 
-DATABASE = 'predictor.db'
+DATABASE = path + 'predictor.db'
 MODELO_LISTO = False
 
 
