@@ -4,7 +4,7 @@ Te hace una serie de preguntas y te dice a quien votan los que contestan mas par
 
 ---
 
-Para correr: export FLASK_APP=app.py;flask run
+Para correr: export FLASK_APP=flask_app.py;flask run
 
 ---
 Necesitamos:
