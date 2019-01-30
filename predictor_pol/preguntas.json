@@ -1,58 +1,43 @@
 [
-    {
-        "subject": "educación",
-        "questions": [
-            "El foco del próximo gobierno debe ser mejorar la educación pública."
-        ]
-    },
-    {
-        "subject": "economía",
-        "questions": [
-            "Controlar la inflación es más importante que controlar el desempleo.",
-            "Hay que reducir la cantidad de funcionarios públicos.",
-            "Los ricos pagan impuestos demasiado elevados.",
-            "El gobierno no debe proteger la industria nacional, si las fábricas no son competitivas esta bien que desaparezcan.",
-            "La ley de inclusión financiera es positiva para la sociedad.",
-            "Algunos sindicatos tienen demasiado poder.",
-            "Cuanto más libre es el mercado, más libre es la gente.",
-						"El campo es y debe ser el motor productivo de Uruguay.",
-            "La inversión extranjera es vital para que Uruguay alcance el desarrollo.",
-            "Los supermercados abusan del pueblo con sus precios excesivos."
-        ]
-    },
-    {
-        "subject": "salud",
-        "questions": [
-            "La legalización de la marihuana fue un error.",
-            "La legalización del aborto fue un error."
-        ]
-    },
-    {
-        "subject": "defensa",
-        "questions": [
-            "Uruguay no necesita un ejército."
-        ]
-    },
-    {
-        "subject": "seguridad",
-        "questions": [
-            "Con la vigilancia gubernamental (escuchas telefonicas, e-mails y camaras de seguridad) el que no tiene nada que esconder, no tiene de que preocuparse.",
-            "La pena de muerte debería ser una opción para los crímenes mas serios.",
-            "Uruguay debería aprobar más leyes anti corrupción y ser más duro con los culpables.",
-            "Las FF.AA. deberían tener un rol activo en la seguridad pública.",
-            "Las carceles deberían ser administradas por organizaciones privadas.",
-            "Hay que aumentar el salario de los policias significativamente.",
-            "Para los delitos más graves hay que bajar la edad de imputabilidad a 16 años."
-        ]
-    },
-    {
-        "subject": "otros",
-        "questions": [
-            "Uruguay es demasiado generoso con los inmigrantes.",
-            "La ley trans fue un error.",
-            "El feminismo moderno no busca la igualdad sino el poder.",
-            "No debería existir el concepto de femicidio.",
-            "La separación de estado y religión me parece importante."
-        ]
-    }
+  {
+    "subject": "economía",
+    "questions": [
+      "Controlar la inflación es más importante que controlar el desempleo.",
+      "Hay que reducir la cantidad de funcionarios públicos.",
+      "Deberia aumentar la carga de impuestos para los ricos.",
+      "El gobierno no debe proteger la industria nacional, si las fábricas no son competitivas esta bien que desaparezcan.",
+      "La ley de inclusión financiera es positiva para la sociedad.",
+      "Algunos sindicatos tienen demasiado poder.",
+      "Cuanto más libre es el mercado, más libre es la gente.",
+      "El campo es y debe ser el motor productivo de Uruguay.",
+      "La inversión extranjera es vital para que Uruguay alcance el desarrollo.",
+      "Los supermercados abusan del pueblo con sus precios excesivos."
+    ]
+  },
+  {
+    "subject": "seguridad",
+    "questions": [
+      "Con la vigilancia gubernamental (escuchas telefonicas, e-mails y camaras de seguridad) el que no tiene nada que esconder, no tiene de que preocuparse.",
+      "La pena de muerte debería ser una opción para los crímenes mas serios.",
+      "Uruguay debería aprobar más leyes anti corrupción y ser más duro con los culpables.",
+      "Las FF.AA. deberían tener un rol activo en la seguridad pública.",
+      "Las carceles deberían ser administradas por organizaciones privadas.",
+      "Hay que aumentar el salario de los policias significativamente.",
+      "Para los delitos más graves hay que bajar la edad de imputabilidad a 16 años.",
+      "Uruguay no necesita un ejército."
+    ]
+  },
+  {
+    "subject": "sociedad",
+    "questions": [
+      "Uruguay es demasiado generoso con los inmigrantes.",
+      "La ley trans fue un error.",
+      "El feminismo moderno no busca la igualdad sino el poder.",
+      "Para la ley no deberia diferenciarse homicidio de femicidio.",
+      "La separación de estado y religión me parece importante.",
+      "La legalización de la marihuana fue un error.",
+      "La legalización del aborto fue un error.",
+      "El foco del próximo gobierno debe ser mejorar la educación pública."
+    ]
+  }
 ]
