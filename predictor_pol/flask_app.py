@@ -26,8 +26,6 @@ with open(path + 'candidatos.json') as f:
     ]
 
 DATABASE = path + 'predictor.db'
-MODELO_LISTO = False
-
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -56,8 +54,7 @@ def main():
     return render_template(
         'main.html',
         preguntas=PREGUNTAS,
-        candidatos=CANDIDATOS,
-        modelo_listo=MODELO_LISTO
+        candidatos=CANDIDATOS
     )
 
 

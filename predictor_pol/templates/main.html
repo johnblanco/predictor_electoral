@@ -1,87 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Predictor de candidato</title>
+    <title>Recomendación de candidato 2019</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" title="Default Styles">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
 
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Elecciones 2019</span>
+</nav>
+<div class="container">
+    <h1 class="mt-5">Recomendación de candidato</h1>
+    <p class="lead">¿A quién votan los que piensan más parecido a vos?.</p>
 
-<h1 class="display-3">Recomendación de candidato a partir de tus preferencias</h1>
-
-<hr>
-
-<h2 class="display-4">A quien votan los que piensan más parecido a vos?</h2>
-
-{% if modelo_listo %}
-<div class="msg-inicial">
-    <h2>Contesta las siguientes preguntas y te sugerimos un candidato.</h2>
-</div>
-{% else %}
-<div class="msg-inicial">
-	<h2>El modelo necesita más datos para dar recomendaciones.
-    Indicando tu candidato preferido y contestando el cuestionario contribuis enormemente.</h2>
-</div>
-{% endif %}
-
-
-<form method="post" action="/">
-	<div class="pregunta">
-    <label><h3>A que candidato votarias?</h3></label>
-
-    {% if not modelo_listo %}
-    <select required name="candidato">
-        {% for c in candidatos %}
-            <option value="{{loop.index}}">{{c}}</option>
-        {% endfor %}
-    </select>
-	</div>
-    {% endif %}
-
-    {% for p in preguntas %}
-    <div class="pregunta">
-    <h3>{{p}}</h3>
-    <label>
-        <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="0" required>
-        Totalmente en desacuerdo
-        </span>
-    </label>
-    <label>
-        <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="1" required>
-        En desacuerdo
-        </span>
-    </label>
-    <label>
-        <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="2" required>
-        No lo sé
-        </span>
-    </label>
-    <label>
-        <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="3" required>
-        De acuerdo
-        </span>
-    </label>
-    <label>
-        <span>
-        <input name="pregunta_{{loop.index}}" type="radio" value="4" required>
-        Totalmente de acuerdo
-        </span>
-    </label>
-	</div>
-    {% endfor %}
-
-    <div class="botones">
-        <input type="submit" value="Enviar" class="btn btn-primary btn-lg">
-        <input type="reset" value="Borrar" class="btn btn-danger btn-lg">
+    <div class="alert alert-primary" role="alert">
+        Para construir el modelo estadístico necesitamos tu aporte, indicá tu candidato preferido y contestá las
+        preguntas.
     </div>
 
-</form>
+    <form method="post" action="/">
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="candidato">¿Cuál es tu candidato preferido?</label>
+            </div>
+            <div class="col-md-6">
+                <select required name="candidato" id="candidato">
+                    <option disabled="disabled" selected hidden value=""> -- Elige un candidato --</option>
+                    {% for c in candidatos %}
+                    <option value="{{loop.index}}">{{c}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <h4 class="questions-title">Cuestionario</h4>
+
+        {% for p in preguntas %}
+        <div class="row question">
+            <div class="col-md-6">
+                <label class="extra-padding">{{p}}</label>
+            </div>
+            <div class="col-md-6">
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_0"
+                           class="custom-control-input" value="0" required>
+                    <label class="custom-control-label" for="pregunta_{{loop.index}}_0">Totalmente en desacuerdo</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_1"
+                           class="custom-control-input" value="1" required>
+                    <label class="custom-control-label" for="pregunta_{{loop.index}}_1">En desacuerdo</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_2"
+                           class="custom-control-input" value="2" required>
+                    <label class="custom-control-label" for="pregunta_{{loop.index}}_2">No lo sé</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_3"
+                           class="custom-control-input" value="3" required>
+                    <label class="custom-control-label" for="pregunta_{{loop.index}}_3">De acuerdo</label>
+                </div>
+
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_4"
+                           class="custom-control-input" value="4" required>
+                    <label class="custom-control-label" for="pregunta_{{loop.index}}_4">Totalmente de acuerdo</label>
+                </div>
+
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 submit">
+                <input type="submit" value="Siguiente" class="btn btn-primary btn-lg">
+            </div>
+
+        </div>
+
+    </form>
+
+
+</div>
+<footer class="footer">
+    <div class="container github">
+        <span class="text-muted">¿Sabés programar? Hacé un fork en <a href="https://github.com/johnblanco/predictor_electoral">Github</a></span>
+    </div>
+</footer>
 
 </body>
 </html>
