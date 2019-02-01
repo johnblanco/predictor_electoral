@@ -23,10 +23,10 @@
     <form method="post" action="/">
 
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <label for="candidato">¿Cuál es tu candidato preferido?</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <select required name="candidato" id="candidato">
                     <option disabled="disabled" selected hidden value=""> -- Elige un candidato --</option>
                     {% for c in candidatos %}
@@ -40,10 +40,10 @@
 
         {% for p in preguntas %}
         <div class="row question">
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <label class="extra-padding">{{p}}</label>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-6">
                 <div class="custom-control custom-radio">
                     <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_0"
                            class="custom-control-input" value="0" required>
@@ -81,8 +81,8 @@
         {% endfor %}
 
         <div class="row">
-            <div class="col-sm-8"></div>
-            <div class="col-sm-4 submit">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 submit">
                 <input type="submit" value="Siguiente" class="btn btn-primary btn-lg">
             </div>
 
