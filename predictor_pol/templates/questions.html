@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recomendación de candidato 2019</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+
+<body>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Elecciones 2019</span>
+</nav>
+<div class="container">
+    <h1 class="mt-5">Recomendación de candidato</h1>
+    <p class="lead">¿A quién votan los que piensan más parecido a vos?.</p>
+
+    <form method="post" action="/">
+
+        {% for category in preguntas %}
+            <h4 class="questions-title">{{category.subject}}</h4>
+
+            {% for question in category.questions %}
+                <div class="row question">
+                    <div class="col-md-6">
+                        <label class="extra-padding">{{question.text}}</label>
+                    </div>
+                    <div class="col-md-6">
+                        {% for answer in respuestas %}
+                            <div class="custom-control custom-radio">
+                                <input
+                                type="radio"
+                                name="{{question.id}}"
+                                id="{{question.id}}_{{loop.index}}" 
+                                class="custom-control-input"
+                                value="{{loop.index}}"
+                                required>
+                                <label
+                                class="custom-control-label"
+                                for="{{question.id}}_{{loop.index}}">
+                                    {{answer}}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+      <div class="row">
+          <div class="col-md-8"></div>
+          <div class="col-md-4 submit">
+              <input type="submit" value="Siguiente" class="btn btn-primary btn-lg">
+          </div>
+
+      </div>
+
+    </form>
+
+
+</div>
+<footer class="footer">
+    <div class="container github">
+        <span class="text-muted">
+            ¿Sabés programar? Hacé un fork en
+            <a href="https://github.com/johnblanco/predictor_electoral">Github.</a>
+        </span>
+    </div>
+</footer>
+
+</body>
+</html>
