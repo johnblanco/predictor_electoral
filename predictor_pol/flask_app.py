@@ -6,26 +6,43 @@ import json
 import pandas as pd
 import sqlite3
 import os
-from flask import Flask, render_template, request, g
+from flask import Flask, render_template, request, g, session
 
 app = Flask(__name__)
-path = os.path.dirname(os.path.realpath(__file__)) + "/"
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-with open(path + 'preguntas.json') as f:
-    PREGUNTAS = [
-        question
-        for category in json.load(f)
-        for question in category['questions']
-    ]
+PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
 
-with open(path + 'candidatos.json') as f:
+with open(PATH + 'preguntas.json') as f:
+    PREGUNTAS = []
+    # create the dict structure for the questions constant
+    file_questions = json.load(f)
+    index = 1
+    for category in file_questions:
+        PREGUNTAS.append({
+            'subject': category['subject'].title(),
+            'questions': []
+        })
+        for question in category['questions']:
+            PREGUNTAS[-1]['questions'].append({
+                'text': question,
+                'id': 'pregunta_{}'.format(index)
+            })
+            index += 1
+
+
+with open(PATH + 'candidatos.json') as f:
     CANDIDATOS = [
         candidate
         for pol_party in json.load(f)
         for candidate in pol_party['candidates']
     ]
 
-DATABASE = path + 'predictor.db'
+with open(PATH + 'respuestas.json') as f:
+    RESPUESTAS = json.load(f)
+
+DATABASE = PATH + 'predictor.db'
+
 
 @app.teardown_appcontext
 def close_connection(exception):
@@ -44,16 +61,28 @@ def get_db():
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
-        if validate(request.form):
-            save_response(request)
+        for key, value in request.form.items():
+            session[key] = value
+
+        for category in PREGUNTAS:
+            for question in category['questions']:
+                if question['id'] not in session:
+                    return render_template(
+                        'questions.html',
+                        preguntas=[category],
+                        respuestas=RESPUESTAS
+                    )
+
+        if validate(session):
+            save_response(session)
             return render_template('success.html')
         else:
             # Esto también
             return 'Error'
 
+    session.clear()
     return render_template(
         'main.html',
-        preguntas=PREGUNTAS,
         candidatos=CANDIDATOS
     )
 
@@ -72,8 +101,7 @@ def predict(responses):
     print(xgb.predict(df_test))
 
 
-def save_response(request):
-    form = request.form
+def save_response(form):
     ip = request.remote_addr
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
@@ -96,4 +124,8 @@ def save_response(request):
 
 
 def _get_question_keys(questions):
-    return ['pregunta_{}'.format(i + 1) for i, _ in enumerate(questions)]
+    return [
+        question['id']
+        for category in questions
+        for question in category['questions']
+    ]

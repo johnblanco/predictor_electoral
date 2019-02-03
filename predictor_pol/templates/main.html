@@ -16,8 +16,8 @@
     <p class="lead">¿A quién votan los que piensan más parecido a vos?.</p>
 
     <div class="alert alert-primary" role="alert">
-        Para construir el modelo estadístico necesitamos tu aporte, indicá tu candidato preferido y contestá las
-        preguntas.
+        Para construir el modelo estadístico necesitamos tu aporte, 
+        indicá tu candidato preferido y contestá las preguntas.
     </div>
 
     <form method="post" action="/">
@@ -28,62 +28,20 @@
             </div>
             <div class="col-md-6">
                 <select required name="candidato" id="candidato">
-                    <option disabled="disabled" selected hidden value=""> -- Elige un candidato --</option>
+                    <option disabled="disabled" selected hidden value="">
+                      -- Elige un candidato --
+                    </option>
                     {% for c in candidatos %}
-                    <option value="{{loop.index}}">{{c}}</option>
+                        <option value="{{loop.index}}">{{c}}</option>
                     {% endfor %}
                 </select>
             </div>
         </div>
 
-        <h4 class="questions-title">Cuestionario</h4>
-
-        {% for p in preguntas %}
-        <div class="row question">
-            <div class="col-md-6">
-                <label class="extra-padding">{{p}}</label>
-            </div>
-            <div class="col-md-6">
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_0"
-                           class="custom-control-input" value="0" required>
-                    <label class="custom-control-label" for="pregunta_{{loop.index}}_0">Totalmente en desacuerdo</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_1"
-                           class="custom-control-input" value="1" required>
-                    <label class="custom-control-label" for="pregunta_{{loop.index}}_1">En desacuerdo</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_2"
-                           class="custom-control-input" value="2" required>
-                    <label class="custom-control-label" for="pregunta_{{loop.index}}_2">No lo sé</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_3"
-                           class="custom-control-input" value="3" required>
-                    <label class="custom-control-label" for="pregunta_{{loop.index}}_3">De acuerdo</label>
-                </div>
-
-                <div class="custom-control custom-radio">
-                    <input type="radio" name="pregunta_{{loop.index}}" id="pregunta_{{loop.index}}_4"
-                           class="custom-control-input" value="4" required>
-                    <label class="custom-control-label" for="pregunta_{{loop.index}}_4">Totalmente de acuerdo</label>
-                </div>
-
-
-            </div>
-
-        </div>
-        {% endfor %}
-
         <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4 submit">
-                <input type="submit" value="Siguiente" class="btn btn-primary btn-lg">
+                <input type="submit" value="Comenzar" class="btn btn-primary btn-lg">
             </div>
 
         </div>
@@ -94,7 +52,10 @@
 </div>
 <footer class="footer">
     <div class="container github">
-        <span class="text-muted">¿Sabés programar? Hacé un fork en <a href="https://github.com/johnblanco/predictor_electoral">Github</a></span>
+        <span class="text-muted">
+            ¿Sabés programar? Hacé un fork en 
+            <a href="https://github.com/johnblanco/predictor_electoral">Github.</a>
+        </span>
     </div>
 </footer>
 
