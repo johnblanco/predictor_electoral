@@ -6,7 +6,7 @@ import json
 import pandas as pd
 import sqlite3
 import os
-from flask import Flask, render_template, request, g, session
+from flask import Flask, render_template, request, g, session, redirect
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -58,6 +58,14 @@ def get_db():
     return db
 
 
+@app.route('/add-mail', methods=['POST'])
+def add_mail():
+    if request.method == 'POST':
+        print(request.form)
+        print(int(session['answer_id']))
+        save_email(request.form, int(session['answer_id']))
+        return redirect('/')
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
@@ -74,7 +82,8 @@ def main():
                     )
 
         if validate(session):
-            save_response(session)
+            answer_id = save_response(session)
+            session['answer_id'] = answer_id
             return render_template('success.html')
         else:
             # Esto también
@@ -101,16 +110,23 @@ def predict(responses):
     print(xgb.predict(df_test))
 
 
+def save_email(form,id):
+    cur = get_db().cursor()
+    sql = (
+            "update encuestas set email=?"
+            "where id=?;"
+        )
+    cur.execute(sql, (form['email'], id))
+
 def save_response(form):
-    ip = request.remote_addr
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
     candidato = int(form['candidato'])
     sql = (
-        "insert into encuestas('candidato_elegido','ip','fecha')"
-        "values(?,?,?);"
+        "insert into encuestas('candidato_elegido','fecha')"
+        "values(?,?);"
     )
-    res = cur.execute(sql, (candidato, ip, fecha))
+    res = cur.execute(sql, (candidato, fecha))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):
@@ -121,6 +137,8 @@ def save_response(form):
             "('id_encuesta','id_pregunta','respuesta') values(?,?,?);"
         )
         cur.execute(sql, (id_encuesta, id_pregunta.split('_')[-1], respuesta))
+
+    return id_encuesta
 
 
 def _get_question_keys(questions):

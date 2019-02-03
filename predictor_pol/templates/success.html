@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Predictor de candidato</title>
+    <title>Recomendación de candidato 2019</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" title="Default Styles">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">aquienvoto.uy</span>
+</nav>
+<div class="container">
+    <div class="alert alert-success thank-you" role="alert">
+        Gracias por completar el cuestionario.
+    </div>
 
-<div class="msg-inicial">
-    <h2>Gracias por completar el cuestionario.</h2>
+    <h2>Opcional</h2>
+    <p>¿Deseas dejarnos tu e-mail para que cuando este listo
+        el modelo podamos avisarte la predicción que hubiera hecho contigo?</p>
+
+    <form method="post" action="/add-mail">
+        <input type="email" placeholder="Ingresa tu e-mail" required name="email">
+        <input type="submit" value="Si" class="btn btn-primary">
+        <a href="/" class="btn btn-primary">No</a>
+    </form>
+
+
 </div>
-
-<hr>
-
-<a href="/" class="btn btn-warning btn-lg btn-block">Volver al inicio</a>
 
 
 </body>
+</html>
