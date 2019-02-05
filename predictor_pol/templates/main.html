@@ -31,8 +31,12 @@
                     <option disabled="disabled" selected hidden value="">
                       -- Elige un candidato --
                     </option>
-                    {% for c in candidatos %}
-                        <option value="{{loop.index}}">{{c}}</option>
+                    {% for party in candidatos %}
+                        <optgroup label="{{party.name}}">
+                        	{% for candidate in party.candidates %}
+                        		<option value="{{loop.index}}"> {{candidate}} </option>
+                        	{% endfor %}
+                        </optgroup>
                     {% endfor %}
                 </select>
             </div>
@@ -51,7 +55,7 @@
 
 </div>
 <footer class="footer">
-    <div class="container github">
+    <div class="github">
         <span class="text-muted">
             ¿Sabés programar? Hacé un fork en 
             <a href="https://github.com/johnblanco/predictor_electoral">Github.</a>
