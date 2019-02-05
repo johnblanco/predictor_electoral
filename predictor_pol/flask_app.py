@@ -80,6 +80,7 @@ def add_mail():
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
+        session['page'] += 1
         for key, value in request.form.items():
             session[key] = value
 
@@ -89,7 +90,8 @@ def main():
                     return render_template(
                         'questions.html',
                         preguntas=[category],
-                        respuestas=RESPUESTAS
+                        respuestas=RESPUESTAS,
+                        page=session['page']
                     )
 
         if validate(session):
@@ -101,6 +103,7 @@ def main():
             return 'Error'
 
     session.clear()
+    session['page'] = 0
     return render_template(
         'main.html',
         candidatos=CANDIDATOS
