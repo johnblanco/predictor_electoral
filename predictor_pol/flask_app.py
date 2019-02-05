@@ -45,7 +45,7 @@ with open(PATH + 'candidatos.json') as f:
 with open(PATH + 'respuestas.json') as f:
     RESPUESTAS = json.load(f)
 
-DATABASE = PATH + 'predictor.db'
+DATABASE = PATH + 'predictor_prod.db'
 
 
 @app.teardown_appcontext
@@ -61,6 +61,13 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
     return db
 
+@app.route('/count_rows', methods=['GET'])
+def count_rows():
+    cur = get_db().cursor()
+    sql = 'select count(1) from encuestas;'
+    rows = cur.execute(sql).fetchall()
+
+    return str(rows[0][0])
 
 @app.route('/add-mail', methods=['POST'])
 def add_mail():
