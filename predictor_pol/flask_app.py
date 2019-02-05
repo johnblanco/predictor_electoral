@@ -32,11 +32,15 @@ with open(PATH + 'preguntas.json') as f:
 
 
 with open(PATH + 'candidatos.json') as f:
-    CANDIDATOS = [
-        candidate
-        for pol_party in json.load(f)
-        for candidate in pol_party['candidates']
-    ]
+    CANDIDATOS = []
+    file_parties = json.load(f)
+    for party in file_parties:
+        CANDIDATOS.append({
+            'name': party['name'].title(),
+            'candidates': []
+            })
+        for candidate in party['candidates']:
+            CANDIDATOS[-1]['candidates'].append(candidate) 
 
 with open(PATH + 'respuestas.json') as f:
     RESPUESTAS = json.load(f)
