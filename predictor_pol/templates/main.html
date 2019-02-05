@@ -34,7 +34,7 @@
                     {% for party in candidatos %}
                         <optgroup label="{{party.name}}">
                         	{% for candidate in party.candidates %}
-                        		<option value="{{candidate}}"> {{candidate}} </option>
+                        		<option value="{{loop.index}}"> {{candidate}} </option>
                         	{% endfor %}
                         </optgroup>
                     {% endfor %}
