@@ -32,9 +32,9 @@
                       -- Elige un candidato --
                     </option>
                     {% for party in candidatos %}
-                        <optgroup label="{{party.name}}">
+                        <optgroup label="{{party.party}}">
                         	{% for candidate in party.candidates %}
-                        		<option value="{{loop.index}}"> {{candidate}} </option>
+                        		<option value="{{candidate.id}}"> {{candidate.name}} </option>
                         	{% endfor %}
                         </optgroup>
                     {% endfor %}

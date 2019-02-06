@@ -1,64 +1,131 @@
 [
     {
-        "name": "Frente Amplio",
+        "party": "Frente Amplio",
         "candidates": [
-            "Óscar Andrade",
-            "Mario Bergara",
-            "Carolina Cosse",
-            "Daniel Martínez"
+        	{
+        		"name":"Carolina Cosse",
+        		"id": 1
+        	},
+        	{
+        		"name":"Daniel Martínez",
+        		"id": 2
+        	},
+            {
+        		"name": "Mario Bergara",
+        		"id": 3
+        	},
+        	{
+        		"name":"Óscar Andrade",
+        		"id": 4
+        	}            
         ]
     },
     {
-        "name": "Partido Nacional",
+        "party": "La Alternativa",
         "candidates": [
-            "Verónica Alonso",
-            "Enrique Antía",
-            "Álvaro Germano",
-            "Carlos Iafigliola",
-            "Luis Lacalle Pou",
-            "Jorge Larrañaga",
-            "Juan Sartori"
+        	{
+        		"name": "Pablo Mieres",
+        		"id": 5
+        	}
         ]
     },
     {
-        "name": "Partido Colorado",
+        "party": "Partido Colorado",
         "candidates": [
-            "José Amorín Batlle",
-            "Pedro Etchegaray",
-            "Edgardo Martínez Zimarioff",
-            "Héctor Rovira",
-            "Julio María Sanguinetti",
-            "Ernesto Talvi"
+        	{
+        		"name": "Edgardo Martínez Zimarioff",
+        		"id": 6
+        	},
+        	{
+        		"name": "Ernesto Talvi",
+        		"id": 7
+        	},
+        	{
+        		"name":"Héctor Rovira",
+        		"id": 8
+        	},
+        	{
+        		"name": "José Amorín Batlle",
+        		"id": 9
+        	},
+        	{
+        		"name": "Julio María Sanguinetti",
+        		"id": 10
+        	},
+        	{
+        		"name":"Pedro Etchegaray",
+        		"id": 11
+        	}  
         ]
     },
     {
-        "name": "La Alternativa",
+        "party": "Partido Ecologista Radical Intransigente",
         "candidates": [
-            "Pablo Mieres"
+        	{
+        		"name": "César Vega",
+        		"id": 12
+        	}
         ]
     },
     {
-        "name": "Unidad Popular",
+        "party": "Partido de la Gente",
         "candidates": [
-            "Gonzalo Abella"
+        	{
+        		"name": "Edgardo Novick",
+        		"id": 13
+        	}
+            
         ]
     },
     {
-        "name": "Partido de la Gente",
+        "party": "Partido Nacional",
         "candidates": [
-            "Edgardo Novick"
+        	{
+        		"name": "Álvaro Germano",
+        		"id": 14
+        	},
+        	{
+        		"name": "Carlos Iafigliola",
+        		"id": 15
+        	},
+        	{
+        		"name": "Enrique Antía",
+        		"id": 16
+        	},
+        	{
+        		"name": "Jorge Larrañaga",
+        		"id": 17
+        	},
+        	{
+        		"name": "Juan Sartori",
+        		"id": 18
+        	},
+        	{
+        		"name": "Luis Lacalle Pou",
+        		"id": 19
+        	},
+        	{
+        		"name": "Verónica Alonso",
+        		"id": 20
+        	}
         ]
     },
     {
-        "name": "Partido Ecologista Radical Intransigente",
+        "party": "Partido de los Trabajadores",
         "candidates": [
-            "César Vega"
+        	{
+        		"name": "Rafael Fernández",
+        		"id": 21
+        	}
         ]
     },
     {
-        "name": "Partido de los Trabajadores",
+        "party": "Unidad Popular",
         "candidates": [
-            "Rafael Fernández"
+        	{
+        		"name":"Gonzalo Abella",
+        		"id": 22
+        	}
         ]
     }
 ]
