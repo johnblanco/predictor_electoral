@@ -48,7 +48,7 @@ with open(PATH + 'candidatos.json') as f:
 with open(PATH + 'respuestas.json') as f:
     RESPUESTAS = json.load(f)
 
-DATABASE = PATH + 'predictor.db'
+DATABASE = PATH + 'predictor_prod.db'
 
 
 @app.teardown_appcontext
