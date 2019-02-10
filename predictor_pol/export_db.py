@@ -17,8 +17,7 @@ with open('encuestas.csv','w') as f:
 
 sql = '''
 select id_encuesta,id_pregunta,respuesta
-from respuestas_encuestas
-where id_pregunta<6;
+from respuestas_encuestas;
 '''
 
 cur = db.cursor()
