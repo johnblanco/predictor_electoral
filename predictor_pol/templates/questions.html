@@ -13,48 +13,66 @@
     <span class="navbar-brand mb-0 h1">aquienvoto.uy</span>
 </nav>
 <div class="container">
-    <h1 class="mt-5">Recomendación de candidato</h1>
-    <p class="lead">¿A quién votan los que piensan más parecido a vos?.</p>
+    <div class="row">
+        <h1 class="mt-5">Recomendación de candidato</h1>
+        <p class="lead">¿A quién votan los que piensan más parecido a vos?</p>
+
+        <div class="alert alert-secondary explanation" role="alert">
+            <p>
+                Elegí respuestas del 1 al 5.
+            </p>
+            <p>
+                1 es en desacuerdo, 3 es neutral (o no lo sé) y 5 es totalmente de acuerdo.
+            </p>
+        </div>
+    </div>
+
 
     <form method="post" action="/">
 
-        {% for category in preguntas %}
-            <h4 class="questions-title">{{category.subject}}</h4>
+        <div class="row">
+            {% for category in preguntas %}
+            <h4 class="questions-title"><span>Categoría {{page}}/3:</span> {{category.subject}}</h4>
+        </div>
 
-            {% for question in category.questions %}
-                <div class="row question">
-                    <div class="col-md-6">
-                        <label class="extra-padding">{{question.text}}</label>
-                    </div>
-                    <div class="col-md-6">
-                        {% for answer in respuestas %}
-                            <div class="custom-control custom-radio">
-                                <input
-                                type="radio"
-                                name="{{question.id}}"
-                                id="{{question.id}}_{{loop.index}}" 
-                                class="custom-control-input"
-                                value="{{loop.index}}"
-                                required>
-                                <label
-                                class="custom-control-label"
-                                for="{{question.id}}_{{loop.index}}">
-                                    {{answer}}
-                                </label>
-                            </div>
-                        {% endfor %}
-                    </div>
+
+        {% for question in category.questions %}
+        <div class="row question mb-4">
+            <div class="col-md-6">
+                <label class="extra-padding">{{question.text}}</label>
+            </div>
+            <div class="col-md-6 answer-buttons">
+                {% for answer in respuestas %}
+                <div class="custom-control custom-radio">
+
+                    <input
+                            type="radio"
+                            name="{{question.id}}"
+                            id="{{question.id}}_{{loop.index}}"
+                            class="custom-control-input"
+                            value="{{loop.index}}"
+                            required>
+
+                    <label
+                            class="custom-control-label"
+                            for="{{question.id}}_{{loop.index}}">
+                        {{answer}}
+                    </label>
                 </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
         {% endfor %}
 
-      <div class="row">
-          <div class="col-md-8"></div>
-          <div class="col-md-4 next">
-              <span class="page-count">{{page}} / 3</span><input type="submit" value="Siguiente" class="btn btn-primary btn-lg">
-          </div>
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 next">
+                <span class="page-count"></span><input type="submit" value="Siguiente"
+                                                                   class="btn btn-primary btn-lg">
+            </div>
 
-      </div>
+        </div>
 
     </form>
 
