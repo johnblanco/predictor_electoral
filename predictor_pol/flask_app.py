@@ -7,7 +7,6 @@ import pandas as pd
 import sqlite3
 import os
 from flask import Flask, render_template, request, g, session, redirect
-from sklearn.decomposition import PCA
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
