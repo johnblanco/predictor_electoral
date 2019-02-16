@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
+QUESTIONS_COUNT = 27
 
 with open(PATH + 'preguntas.json') as f:
     PREGUNTAS = []
@@ -101,18 +102,17 @@ def main():
             answer_id = save_response(session, predictions['candidate_id'])
             session['answer_id'] = answer_id
 
-            return render_template('success.html',
-                                   predicted_candidate_name=predictions['candidate_name'],
-                                   candidatos = CANDIDATOS)
+            return render_template(
+                'success.html',
+                predicted_candidate_name=predictions['candidate_name'],
+                candidatos=CANDIDATOS)
         else:
             # Esto también
             return 'Error'
 
     session.clear()
     session['page'] = 0
-    return render_template(
-        'main.html'
-    )
+    return render_template('main.html')
 
 
 def validate(form):
@@ -127,7 +127,7 @@ def predict(responses):
     pca = joblib.load(PATH + 'pca.joblib')
 
     d = {}
-    for i in range(1,27):
+    for i in range(1, QUESTIONS_COUNT):
         d['resp_{}'.format(i)] = [ responses['pregunta_{}'.format(i)] ]
 
     df = pd.DataFrame.from_dict(d)
@@ -136,10 +136,10 @@ def predict(responses):
     candidate_id = candidate_model.predict(transformed)
 
     candidate_name = ''
-    for p in CANDIDATOS:
-        for c in p['candidates']:
-            if c['id'] == candidate_id:
-                candidate_name = c['name']
+    for party in CANDIDATOS:
+        for candidate in party['candidates']:
+            if candidate['id'] == candidate_id:
+                candidate_name = candidate['name']
     return {'candidate_id': candidate_id, 'candidate_name': candidate_name}
 
 
