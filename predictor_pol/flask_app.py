@@ -42,9 +42,9 @@ with open(PATH + 'candidatos.json') as f:
             })
         for candidate in party['candidates']:
             CANDIDATOS[-1]['candidates'].append({
-            	'name': candidate['name'].title(),
-            	'id': candidate['id']
-            	}) 
+                'name': candidate['name'].title(),
+                'id': candidate['id']
+                })
 
 with open(PATH + 'respuestas.json') as f:
     RESPUESTAS = json.load(f)
@@ -65,6 +65,7 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
     return db
 
+
 @app.route('/count_rows', methods=['GET'])
 def count_rows():
     cur = get_db().cursor()
@@ -73,11 +74,13 @@ def count_rows():
 
     return str(rows[0][0])
 
+
 @app.route('/update_quiz', methods=['POST'])
 def add_mail():
     if request.method == 'POST':
         update_quiz(request.form, int(session['answer_id']))
         return redirect('/')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -151,7 +154,8 @@ def update_quiz(form, id):
 
     email = form['email']
     candidato = int(form['candidato'])
-    cur.execute(sql, (email,candidato, id))
+    cur.execute(sql, (email, candidato, id))
+
 
 def save_response(form, predicted_candidate_id):
     fecha = datetime.datetime.now().isoformat()
