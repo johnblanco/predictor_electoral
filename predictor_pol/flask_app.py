@@ -7,7 +7,6 @@ import pandas as pd
 import sqlite3
 import os
 from flask import Flask, render_template, request, g, session, redirect
-from sklearn.decomposition import PCA
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -73,10 +72,12 @@ def count_rows():
 
     return str(rows[0][0])
 
-@app.route('/update_quiz', methods=['POST'])
+@app.route('/add-mail', methods=['POST'])
 def add_mail():
     if request.method == 'POST':
-        update_quiz(request.form, int(session['answer_id']))
+        print(request.form)
+        print(int(session['answer_id']))
+        save_email(request.form, int(session['answer_id']))
         return redirect('/')
 
 @app.route('/', methods=['GET', 'POST'])
@@ -97,13 +98,9 @@ def main():
                     )
 
         if validate(session):
-            predictions = predict(session)
-            answer_id = save_response(session, predictions['candidate_id'])
+            answer_id = save_response(session)
             session['answer_id'] = answer_id
-
-            return render_template('success.html',
-                                   predicted_candidate_name=predictions['candidate_name'],
-                                   candidatos = CANDIDATOS)
+            return render_template('success.html')
         else:
             # Esto también
             return 'Error'
@@ -111,57 +108,42 @@ def main():
     session.clear()
     session['page'] = 0
     return render_template(
-        'main.html'
+        'main.html',
+        candidatos=CANDIDATOS
     )
 
 
 def validate(form):
     valid_keys = {
+        'candidato',
         *_get_question_keys(PREGUNTAS)
     }
     return all(form.get(key, '').isdecimal() for key in valid_keys)
 
 
 def predict(responses):
-    candidate_model = joblib.load(PATH + 'candidate_model.joblib')
-    pca = joblib.load(PATH + 'pca.joblib')
-
-    d = {}
-    for i in range(1,27):
-        d['resp_{}'.format(i)] = [ responses['pregunta_{}'.format(i)] ]
-
-    df = pd.DataFrame.from_dict(d)
-
-    transformed = pca.transform(df)
-    candidate_id = candidate_model.predict(transformed)
-
-    candidate_name = ''
-    for p in CANDIDATOS:
-        for c in p['candidates']:
-            if c['id'] == candidate_id:
-                candidate_name = c['name']
-    return {'candidate_id': candidate_id, 'candidate_name': candidate_name}
+    xgb = joblib.load('xg_model')
+    df_test = pd.DataFrame.from_dict({'resp1': [1], 'resp2': [1]})
+    print(xgb.predict(df_test))
 
 
-def update_quiz(form, id):
+def save_email(form,id):
     cur = get_db().cursor()
     sql = (
-            "update encuestas set email=?, candidato_elegido=?"
+            "update encuestas set email=?"
             "where id=?;"
         )
+    cur.execute(sql, (form['email'], id))
 
-    email = form['email']
-    candidato = int(form['candidato'])
-    cur.execute(sql, (email,candidato, id))
-
-def save_response(form, predicted_candidate_id):
+def save_response(form):
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
+    candidato = int(form['candidato'])
     sql = (
-        "insert into encuestas('fecha','candidato_predicho')"
+        "insert into encuestas('candidato_elegido','fecha')"
         "values(?,?);"
     )
-    res = cur.execute(sql, (fecha, predicted_candidate_id))
+    res = cur.execute(sql, (candidato, fecha))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):

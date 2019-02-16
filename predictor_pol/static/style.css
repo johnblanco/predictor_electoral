@@ -11,19 +11,11 @@
 
 .question{
     border: 1px solid rgba(86, 61, 124, .2);
-    padding: .5em .8em .8em;
-}
-
-.question:nth-child(odd){
-    background: rgba(0,0,0,.025);
+    margin-bottom: 5px;
 }
 
 .questions-title{
     margin: 20px 0;
-}
-
-.questions-title span{
-    font-weight: 300;
 }
 
 .extra-padding{
@@ -51,28 +43,4 @@
 
 .page-count{
     padding: 0 10px;
-}
-
-.alert strong {
-    font-weight: normal;
-}
-
-.answer-buttons {
-    padding: 1em;
-    text-align: right;
-}
-
-.answer-buttons > div {
-    display: inline-block;
-    margin: .3em;
-}
-
-.explanation {
-    display: block;
-    width: 100%;
-    padding-bottom: 0;
-}
-
-.extra-left {
-    margin-left: 10px;
 }

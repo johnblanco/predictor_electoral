@@ -9,26 +9,38 @@
 </head>
 <body>
 <nav class="navbar navbar-light bg-light">
-    <h1 class="navbar-brand mb-0 h1">aquienvoto.uy</h1>
+    <span class="navbar-brand mb-0 h1">aquienvoto.uy</span>
 </nav>
 <div class="container">
-    <h2 class="mt-5">Recomendación de candidato</h2>
-    <h3 class="lead mb-5">¿A quién votan los más parecido a vos?</h3>
+    <h1 class="mt-5">Recomendación de candidato</h1>
+    <p class="lead">¿A quién votan los que piensan más parecido a vos?.</p>
 
-    <div class="alert alert-secondary" role="alert">
-        <p>
-            aquienvoto.uy recopila información basada en las respuestas de los usuarios y mediante aprendizaje
-            automático genera recomendaciones de candidatos para las <strong>elecciones presidenciales de Uruguay 2019</strong>
-        </p>
-
-        <p>
-            Cuanto más respondamos, mejor.
-        </p>
-
-
+    <div class="alert alert-primary" role="alert">
+        Para construir el modelo estadístico necesitamos tu aporte, 
+        indicá tu candidato preferido y contestá las preguntas.
     </div>
 
     <form method="post" action="/">
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="candidato">¿Cuál es tu candidato preferido?</label>
+            </div>
+            <div class="col-md-6">
+                <select required name="candidato" id="candidato">
+                    <option disabled="disabled" selected hidden value="">
+                      -- Elige un candidato --
+                    </option>
+                    {% for party in candidatos %}
+                        <optgroup label="{{party.party}}">
+                        	{% for candidate in party.candidates %}
+                        		<option value="{{candidate.id}}"> {{candidate.name}} </option>
+                        	{% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-md-4"></div>

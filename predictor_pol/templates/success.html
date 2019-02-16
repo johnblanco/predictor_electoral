@@ -12,80 +12,20 @@
     <span class="navbar-brand mb-0 h1">aquienvoto.uy</span>
 </nav>
 <div class="container">
-    <div class="alert alert-success thank-you mb-5" role="alert">
+    <div class="alert alert-success thank-you" role="alert">
         Gracias por completar el cuestionario.
     </div>
 
-    <h2 class="mb-5">El candidato recomendado es <span class="badge badge-secondary">{{predicted_candidate_name}}</span></h2>
-    <hr/>
+    <h2>Opcional</h2>
+    <p>¿Deseas dejarnos tu e-mail para que cuando este listo
+        el modelo podamos avisarte la predicción que hubiera hecho contigo?</p>
 
-    <p>
-        Cuanto más respondamos, mejor. Compartí esta aplicación para ir mejorando los resultados.
-    </p>
-    <p>
-        Para una mejor predicción guardate esta pagina en favoritos y accede más cerca de las elecciones.
-    </p>
-
-    <hr/>
-
-    <p>
-        Si nos indicás tu candidato favorito ayudas a que las predicciones mejoren.
-        Podés dejarnos tu mail y obtener una prediccion sin tener que responder nuevamente.
-    </p>
-
-    <form method="post" action="/update_quiz">
-
-        <div class="row">
-            <div class="col-md-4">
-                <label for="candidato">¿Cuál es tu preferido?</label>
-            </div>
-            <div class="col-md-8">
-                <select required name="candidato" id="candidato">
-                    <option disabled="disabled" selected hidden value="">
-                      -- Elige un candidato --
-                    </option>
-                    {% for party in candidatos %}
-                        <optgroup label="{{party.party}}">
-                        	{% for candidate in party.candidates %}
-                        		<option value="{{candidate.id}}"> {{candidate.name}} </option>
-                        	{% endfor %}
-                        </optgroup>
-                    {% endfor %}
-                </select>
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label for="email">Dejanos tu mail (opcional)</label>
-            </div>
-            <div class="col-md-8">
-                <input type="email" placeholder="Ingresa tu e-mail" name="email" id="email">
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-            <input type="submit" value="Enviar" class="btn btn-primary">
-            </div>
-
-        </div>
+    <form method="post" action="/add-mail">
+        <input type="email" placeholder="Ingresa tu e-mail" required name="email">
+        <input type="submit" value="Si" class="btn btn-primary">
+        <a href="/" class="btn btn-primary">No</a>
     </form>
 
-    <div class="alert alert-secondary mt-5" role="alert">
-        <p>
-            <small>Recorda que aquienvoto.uy es tan solo entretenimiento y la recomendación proviene de un modelo estadístico impreciso.<br/>
-        Es tu deber cívico revisar los programas de todos los candidatos para votar.</small>
-
-        </p>
-    </div>
-
-    <hr/>
-
-
-    <p>
-
-    </p>
 
 </div>
 
