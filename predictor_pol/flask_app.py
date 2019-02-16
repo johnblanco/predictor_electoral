@@ -2,54 +2,16 @@
 
 import datetime
 import joblib
-import json
 import pandas as pd
 import sqlite3
-import os
+
 from flask import Flask, render_template, request, g, session, redirect
+from load_data import (
+    DATABASE, PREGUNTAS, CANDIDATOS, PATH, RESPUESTAS, QUESTIONS_COUNT
+)
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-
-PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
-QUESTIONS_COUNT = 27
-
-with open(PATH + 'preguntas.json') as f:
-    PREGUNTAS = []
-    # create the dict structure for the questions constant
-    file_questions = json.load(f)
-    index = 1
-    for category in file_questions:
-        PREGUNTAS.append({
-            'subject': category['subject'].title(),
-            'questions': []
-        })
-        for question in category['questions']:
-            PREGUNTAS[-1]['questions'].append({
-                'text': question,
-                'id': 'pregunta_{}'.format(index)
-            })
-            index += 1
-
-
-with open(PATH + 'candidatos.json') as f:
-    CANDIDATOS = []
-    file_parties = json.load(f)
-    for party in file_parties:
-        CANDIDATOS.append({
-            'party': party['party'].title(),
-            'candidates': []
-            })
-        for candidate in party['candidates']:
-            CANDIDATOS[-1]['candidates'].append({
-                'name': candidate['name'].title(),
-                'id': candidate['id']
-                })
-
-with open(PATH + 'respuestas.json') as f:
-    RESPUESTAS = json.load(f)
-
-DATABASE = PATH + 'predictor_prod.db'
 
 
 @app.teardown_appcontext
