@@ -124,16 +124,16 @@ def validate(form):
 
 def predict(responses):
     candidate_model = joblib.load(PATH + 'candidate_model.joblib')
+    pca = joblib.load(PATH + 'pca.joblib')
 
     d = {}
     for i in range(1,27):
         d['resp_{}'.format(i)] = [ responses['pregunta_{}'.format(i)] ]
-    print(d)
+
     df = pd.DataFrame.from_dict(d)
-    pca = PCA(n_components=12)
-    pca.fit(df)
-    candidate_id = candidate_model.predict(pca.transform(df))
-    print(candidate_id)
+
+    transformed = pca.transform(df)
+    candidate_id = candidate_model.predict(transformed)
 
     candidate_name = ''
     for p in CANDIDATOS:

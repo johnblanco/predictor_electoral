@@ -44,16 +44,7 @@
             <div class="col-md-6 answer-buttons">
                 {% for answer in respuestas %}
                 <div class="custom-control custom-radio">
-                    {% if loop.index == 1 %}
-                    <input
-                            type="radio"
-                            name="{{question.id}}"
-                            id="{{question.id}}_{{loop.index}}"
-                            class="custom-control-input"
-                            value="{{loop.index}}"
-                            checked
-                            required>
-                    {% else %}
+
                     <input
                             type="radio"
                             name="{{question.id}}"
@@ -61,7 +52,6 @@
                             class="custom-control-input"
                             value="{{loop.index}}"
                             required>
-                    {% endif %}
 
                     <label
                             class="custom-control-label"
