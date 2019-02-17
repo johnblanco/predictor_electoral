@@ -4,8 +4,8 @@ from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
 import json
 
-df = pd.read_csv('predictor_pol/encuestas.csv')
-cand_data = json.loads(open('predictor_pol/candidatos.json','r').read())
+df = pd.read_csv('../csvs/encuestas.csv')
+cand_data = json.loads(open('../predictor_pol/candidatos.json','r').read())
 
 def get_party(id):
     for p in cand_data:
@@ -24,7 +24,7 @@ def get_name(id):
 df['partido'] = df.candidato.apply(get_party)
 df['nombre'] = df.candidato.apply(get_name)
 
-respuestas = pd.read_csv('predictor_pol/respuestas_encuestas.csv')
+respuestas = pd.read_csv('../csvs/respuestas_encuestas.csv')
 
 def resp(id_encuesta,id_pregunta):
     s= respuestas[(respuestas['id_encuesta'] == id_encuesta) & (respuestas['id_pregunta'] == id_pregunta)]['respuesta']
