@@ -8,6 +8,7 @@ http://www.aquienvoto.uy
 Para correr: export FLASK_APP=flask_app.py;flask run
 
 Scripts para exportar db y modelos: scripts/
+
 ---
 
 Discord: https://discordapp.com/channels/536302995219021825/536328675205840916
