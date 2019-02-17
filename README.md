@@ -6,11 +6,8 @@ http://www.aquienvoto.uy
 ---
 
 Para correr: export FLASK_APP=flask_app.py;flask run
-
+Scripts para exportar db y modelos: scripts/
 ---
-Necesitamos:
-
-* Tener un set de datos inicial de respuestas con el candidato ya seleccionado.
 
 Discord: https://discordapp.com/channels/536302995219021825/536328675205840916
 
