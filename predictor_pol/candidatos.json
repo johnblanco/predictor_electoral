@@ -68,6 +68,15 @@
         ]
     },
     {
+        "party": "Partido Digital",
+        "candidates": [
+        	{
+        		"name": "Justin Graside",
+        		"id": 23
+        	}
+        ]
+    },
+    {
         "party": "Partido de la Gente",
         "candidates": [
         	{
