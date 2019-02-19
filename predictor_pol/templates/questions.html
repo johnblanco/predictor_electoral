@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <h1 class="mt-5">Recomendación de candidato</h1>
-        <p class="lead">¿A quién votan los que piensan más parecido a vos?</p>
+        <p class="lead">¿A quién votan los que piensan más parecidos a vos?</p>
 
         <div class="alert alert-secondary explanation" role="alert">
             <p>
@@ -67,8 +67,7 @@
 
         {% if page == num_categories %}
         <div class="row">
-          <div class="col-md-6"></div>
-          <div class="col-md-6">
+          <div class="col-md-6 captcha">
             <div class="g-recaptcha" data-sitekey="6Le45ZEUAAAAAA60zuycZVbY5qpAbBUBGXrWWwwv"></div>
           </div>
         </div>
@@ -97,6 +96,16 @@
         </span>
     </div>
 </footer>
+<script>
+window.onload = function() {
+    var $recaptcha = document.querySelector('#g-recaptcha-response');
+
+    if($recaptcha) {
+        $recaptcha.setAttribute("required", "required");
+    }
+};
+</script>
+
 
 </body>
 </html>
