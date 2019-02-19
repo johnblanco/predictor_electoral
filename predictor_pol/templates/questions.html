@@ -32,7 +32,7 @@
 
         <div class="row">
             {% for category in preguntas %}
-            <h4 class="questions-title"><span>Categoría {{page}}/3:</span> {{category.subject}}</h4>
+            <h4 class="questions-title"><span>Categoría {{page}}/{{num_categories}}:</span> {{category.subject}}</h4>
         </div>
 
 
@@ -65,7 +65,7 @@
         {% endfor %}
         {% endfor %}
 
-        {% if page == 3 %}
+        {% if page == num_categories %}
         <div class="row">
           <div class="col-md-6"></div>
           <div class="col-md-6">

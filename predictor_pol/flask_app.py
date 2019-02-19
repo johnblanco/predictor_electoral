@@ -72,6 +72,7 @@ def main():
                 if question['id'] not in session:
                     return render_template(
                         'questions.html',
+                        num_categories=len(PREGUNTAS),
                         preguntas=[category],
                         respuestas=RESPUESTAS,
                         page=session['page']
