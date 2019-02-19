@@ -3,7 +3,7 @@ import sqlite3
 db = sqlite3.connect('../predictor_pol/predictor_prod.db', isolation_level=None)
 sql = '''
 select id,candidato_elegido,fecha
-from encuestas;
+from encuestas where candidato_elegido is not null;
 '''
 
 cur = db.cursor()
