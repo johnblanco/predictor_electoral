@@ -22,6 +22,8 @@ with open(PATH + 'preguntas.json') as f:
             })
             index += 1
 
+QUESTIONS_COUNT = sum([len(category['questions']) for category in PREGUNTAS])
+
 
 with open(PATH + 'candidatos.json') as f:
     CANDIDATOS = []
@@ -39,3 +41,7 @@ with open(PATH + 'candidatos.json') as f:
 
 with open(PATH + 'respuestas.json') as f:
     RESPUESTAS = json.load(f)
+
+with open(PATH + 'secrets.json') as f:
+    secrets = json.load(f)
+    RECAPTCHA_SECRET_KEY = secrets.get('RECAPTCHA_SECRET_KEY')

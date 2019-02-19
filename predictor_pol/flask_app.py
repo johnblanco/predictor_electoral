@@ -2,13 +2,22 @@
 
 import datetime
 import joblib
+import requests
 import pandas as pd
 import sqlite3
 
 from flask import Flask, render_template, request, g, session, redirect
 from load_data import (
-    DATABASE, PREGUNTAS, CANDIDATOS, PATH, RESPUESTAS, QUESTIONS_COUNT
+    DATABASE,
+    PREGUNTAS,
+    QUESTIONS_COUNT,
+    CANDIDATOS,
+    RESPUESTAS,
+    RECAPTCHA_SECRET_KEY,
+    PATH
 )
+
+RECAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify"
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -47,6 +56,13 @@ def add_mail():
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
+        if session['page'] == len(PREGUNTAS):
+            if not validate_captcha(request.form.get('g-recaptcha-response')):
+                return (
+                    'No pudimos verificar que seas humano.\n'
+                    'Beep boop. Hola señor robot.'
+                )
+
         session['page'] += 1
         for key, value in request.form.items():
             session[key] = value
@@ -79,6 +95,20 @@ def main():
     return render_template('main.html')
 
 
+def validate_captcha(captcha_response):
+    if captcha_response is None:
+        return False
+
+    validation_response = requests.post(
+        RECAPTCHA_URL,
+        data={
+            'secret': RECAPTCHA_SECRET_KEY,
+            'response': captcha_response
+        }
+    )
+    return validation_response.json().get('success')
+
+
 def validate(form):
     valid_keys = {
         *_get_question_keys(PREGUNTAS)
@@ -92,7 +122,7 @@ def predict(responses):
 
     d = {}
     for i in range(1, QUESTIONS_COUNT):
-        d['resp_{}'.format(i)] = [ responses['pregunta_{}'.format(i)] ]
+        d['resp_{}'.format(i)] = [responses['pregunta_{}'.format(i)]]
 
     df = pd.DataFrame.from_dict(d)
 
