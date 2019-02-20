@@ -4,7 +4,7 @@ import os
 PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
 
 
-DATABASE = PATH + 'predictor.db'
+DATABASE = PATH + 'predictor_prod.db'
 with open(PATH + 'preguntas.json') as f:
     PREGUNTAS = []
     # create the dict structure for the questions constant
