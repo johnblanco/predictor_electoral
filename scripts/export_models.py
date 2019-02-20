@@ -20,8 +20,8 @@ k=7
 pca = PCA(n_components=n)
 
 #para generar los csvs correr primero export_db
-df = pd.read_csv('../csvs/encuestas.csv')
-respuestas = pd.read_csv('../csvs/respuestas_encuestas.csv')
+df = pd.read_csv('../csvs/encuestas_original.csv')
+respuestas = pd.read_csv('../csvs/respuestas_encuestas_original.csv')
 
 for i in range(1,QUESTIONS_COUNT):
     df['resp_{}'.format(i)] = df.id.apply(lambda x: resp(x,i))
