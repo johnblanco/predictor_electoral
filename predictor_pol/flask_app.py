@@ -10,7 +10,6 @@ from flask import Flask, render_template, request, g, session, redirect
 from load_data import (
     DATABASE,
     PREGUNTAS,
-    QUESTIONS_COUNT,
     CANDIDATOS,
     RESPUESTAS,
     RECAPTCHA_SECRET_KEY,
@@ -122,7 +121,7 @@ def predict(responses):
     pca = joblib.load(PATH + 'pca.joblib')
 
     d = {}
-    for i in range(1, QUESTIONS_COUNT):
+    for i in range(1, 27):
         d['resp_{}'.format(i)] = [responses['pregunta_{}'.format(i)]]
 
     df = pd.DataFrame.from_dict(d)
