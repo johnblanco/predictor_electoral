@@ -2,54 +2,25 @@
 
 import datetime
 import joblib
-import json
+import requests
 import pandas as pd
 import sqlite3
-import os
+
 from flask import Flask, render_template, request, g, session, redirect
+from load_data import (
+    DATABASE,
+    PREGUNTAS,
+    QUESTIONS_COUNT,
+    CANDIDATOS,
+    RESPUESTAS,
+    RECAPTCHA_SECRET_KEY,
+    PATH
+)
+
+RECAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify"
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-
-PATH = os.path.dirname(os.path.realpath(__file__)) + '/'
-QUESTIONS_COUNT = 27
-
-with open(PATH + 'preguntas.json') as f:
-    PREGUNTAS = []
-    # create the dict structure for the questions constant
-    file_questions = json.load(f)
-    index = 1
-    for category in file_questions:
-        PREGUNTAS.append({
-            'subject': category['subject'].title(),
-            'questions': []
-        })
-        for question in category['questions']:
-            PREGUNTAS[-1]['questions'].append({
-                'text': question,
-                'id': 'pregunta_{}'.format(index)
-            })
-            index += 1
-
-
-with open(PATH + 'candidatos.json') as f:
-    CANDIDATOS = []
-    file_parties = json.load(f)
-    for party in file_parties:
-        CANDIDATOS.append({
-            'party': party['party'].title(),
-            'candidates': []
-            })
-        for candidate in party['candidates']:
-            CANDIDATOS[-1]['candidates'].append({
-            	'name': candidate['name'].title(),
-            	'id': candidate['id']
-            	}) 
-
-with open(PATH + 'respuestas.json') as f:
-    RESPUESTAS = json.load(f)
-
-DATABASE = PATH + 'predictor_prod.db'
 
 
 @app.teardown_appcontext
@@ -65,6 +36,7 @@ def get_db():
         db = g._database = sqlite3.connect(DATABASE, isolation_level=None)
     return db
 
+
 @app.route('/count_rows', methods=['GET'])
 def count_rows():
     cur = get_db().cursor()
@@ -73,15 +45,24 @@ def count_rows():
 
     return str(rows[0][0])
 
+
 @app.route('/update_quiz', methods=['POST'])
 def add_mail():
     if request.method == 'POST':
         update_quiz(request.form, int(session['answer_id']))
         return redirect('/')
 
+
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
+        if session['page'] == len(PREGUNTAS):
+            if not validate_captcha(request.form.get('g-recaptcha-response')):
+                return (
+                    'No pudimos verificar que seas humano.\n'
+                    'Beep boop. Hola señor robot.'
+                )
+
         session['page'] += 1
         for key, value in request.form.items():
             session[key] = value
@@ -91,6 +72,7 @@ def main():
                 if question['id'] not in session:
                     return render_template(
                         'questions.html',
+                        num_categories=len(PREGUNTAS),
                         preguntas=[category],
                         respuestas=RESPUESTAS,
                         page=session['page']
@@ -114,6 +96,20 @@ def main():
     return render_template('main.html')
 
 
+def validate_captcha(captcha_response):
+    if captcha_response is None:
+        return False
+
+    validation_response = requests.post(
+        RECAPTCHA_URL,
+        data={
+            'secret': RECAPTCHA_SECRET_KEY,
+            'response': captcha_response
+        }
+    )
+    return validation_response.json().get('success')
+
+
 def validate(form):
     valid_keys = {
         *_get_question_keys(PREGUNTAS)
@@ -127,7 +123,7 @@ def predict(responses):
 
     d = {}
     for i in range(1, QUESTIONS_COUNT):
-        d['resp_{}'.format(i)] = [ responses['pregunta_{}'.format(i)] ]
+        d['resp_{}'.format(i)] = [responses['pregunta_{}'.format(i)]]
 
     df = pd.DataFrame.from_dict(d)
 
@@ -151,7 +147,8 @@ def update_quiz(form, id):
 
     email = form['email']
     candidato = int(form['candidato'])
-    cur.execute(sql, (email,candidato, id))
+    cur.execute(sql, (email, candidato, id))
+
 
 def save_response(form, predicted_candidate_id):
     fecha = datetime.datetime.now().isoformat()

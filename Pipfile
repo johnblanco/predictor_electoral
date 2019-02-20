@@ -17,6 +17,7 @@ xgboost = "*"
 numpy = "*"
 matplotlib = "*"
 joblib = "*"
+requests = "*"
 
 [requires]
 python_version = "3.5"
