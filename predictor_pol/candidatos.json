@@ -129,6 +129,15 @@
         ]
     },
     {
+        "party": "Partido Verde Animalista",
+        "candidates": [
+          {
+            "name": "Gustavo Salle",
+            "id": 24
+          }
+        ]
+    },
+    {
         "party": "Unidad Popular",
         "candidates": [
         	{
