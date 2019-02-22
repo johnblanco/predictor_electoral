@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -30,15 +31,23 @@
 
     <form method="post" action="/">
 
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4 start">
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto start">
                 <input type="submit" value="Comenzar" class="btn btn-primary btn-lg">
             </div>
 
         </div>
-
     </form>
+
+		<div class="row justify-content-md-center start">
+				<div class="col-md-auto">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=www.aquienvoto.uy" class="fa fa-facebook"></a>
+					<a href="https://twitter.com/home?status=www.aquienvoto.uy" class="fa fa-twitter"></a>
+					<a href="https://www.linkedin.com/shareArticle?mini=true&url=www.aquienvoto.uy&title=%C2%BFA%20qui%C3%A9n%20votan%20los%20que%20piensan%20parecido%20a%20m%C3%AD?&summary=&source=" class="fa fa-linkedin"></a>
+					<a href="https://www.reddit.com/submit?url=www.aquienvoto.uy&title=Recomendaci%C3%B3n%20de%20candidato%202019" class="fa fa-reddit"></a>
+				</div>
+		</div>
+
 
 
 </div>
