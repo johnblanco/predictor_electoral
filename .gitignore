@@ -4,3 +4,4 @@ predictor_pol/.idea
 predictor_pol/predictor_prod.db
 predictor_pol/secrets.json
 .DS_Store
+*.joblib
