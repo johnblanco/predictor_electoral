@@ -37,3 +37,5 @@ Para correr: export FLASK_APP=flask_app.py;flask run
 Scripts para exportar db y modelos: scripts/
 
 Datos exportados: csvs/
+
+Lo que está en producción es lo que está en master, en develop desarrollos en curso.
