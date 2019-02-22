@@ -15,6 +15,8 @@ http://www.aquienvoto.uy
 
 [Verspertinas](https://www.youtube.com/watch?v=DaMilJy81Ro)
 
+[El Observador](https://www.elobservador.com.uy/nota/a-quien-voto-el-juego-viral-y-un-viejo-debate-que-factores-inciden-en-el-cuarto-secreto--201922211202)
+
 ### Algunos tweets interesantes
 
 https://twitter.com/gbudino/status/1098414277029965824
@@ -24,11 +26,13 @@ https://twitter.com/Martinjbueno/status/1098554876362133506
 ---
 
 * No se guardan datos sensibles del usuario.
-* Twitter del equipo https://twitter.com/johnblancott [agregar el resto]
-* No trabajamos para ningún partido, ni vendemos servicio de ningún tipo a ningún candidato o partido.
+* Redes del equipo: [@johnblancott](https://twitter.com/johnblancott) en twitter, [@condeelmaster](https://www.instagram.com/condeelmaster/) en instagram  [Falta dirk]
+* No trabajamos para ningún partido, ni vendemos servicios de ningún tipo a ningún candidato o partido.
 * Recordá que aquienvoto.uy es tan solo entretenimiento y la recomendación proviene de un modelo estadístico impreciso.
+* Seguimos en desarrollo. Pronto podremos dar mejores predicciones.
 * Discord: https://discordapp.com/channels/536302995219021825/536328675205840916 
 * Thread original de reddit: https://old.reddit.com/r/uruguay/comments/ahggeh/me_ayudan_a_construir_un_modelo_para_predecir_a/
+
 ---
 
 
