@@ -39,3 +39,5 @@ Scripts para exportar db y modelos: scripts/
 Datos exportados: csvs/
 
 Lo que está en producción es lo que está en master, en develop desarrollos en curso.
+
+Se sigue usando el modelo original hasta próximo aviso.
