@@ -46,11 +46,10 @@ def count_rows():
 
 
 @app.route('/update_quiz', methods=['POST'])
-def update_quiz_handler():
+def add_mail():
     if request.method == 'POST':
         update_quiz(request.form, int(session['answer_id']))
         return redirect('/')
-
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
@@ -144,9 +143,8 @@ def update_quiz(form, id):
             "where id=?;"
         )
 
-    email = form['email']
     candidato = int(form['candidato'])
-    cur.execute(sql, (email, candidato, id))
+    cur.execute(sql, (candidato, id))
 
 
 def save_response(form, predicted_candidate_id):
