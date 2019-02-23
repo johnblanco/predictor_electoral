@@ -15,11 +15,13 @@ http://www.aquienvoto.uy
 
 [Verspertinas](https://www.youtube.com/watch?v=DaMilJy81Ro)
 
-[El Observador](https://www.elobservador.com.uy/nota/a-quien-voto-el-juego-viral-y-un-viejo-debate-que-factores-inciden-en-el-cuarto-secreto--201922211202)
+[El observador](https://www.elobservador.com.uy/nota/a-quien-voto-el-juego-viral-y-un-viejo-debate-que-factores-inciden-en-el-cuarto-secreto--201922211202)
+
 
 ### Algunos tweets interesantes
 
 https://twitter.com/gbudino/status/1098414277029965824
+
 https://twitter.com/Martinjbueno/status/1098554876362133506
 
 
