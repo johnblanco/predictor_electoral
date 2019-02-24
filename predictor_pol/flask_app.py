@@ -11,9 +11,10 @@ from load_data import (
     DATABASE,
     PREGUNTAS,
     CANDIDATOS,
+    PATH,
+    QUESTIONS_COUNT,
     RESPUESTAS,
     RECAPTCHA_SECRET_KEY,
-    PATH,
 )
 
 RECAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify"
@@ -117,8 +118,8 @@ def predict(responses):
     pca = joblib.load(PATH + "pca.joblib")
 
     d = {}
-    for i in range(1, 27):
-        d["resp_{}".format(i)] = [responses["pregunta_{}".format(i)]]
+    for i in range(1, QUESTIONS_COUNT + 1):
+        d[f"resp_{i}"] = [responses[f"pregunta_{i}"]]
 
     df = pd.DataFrame.from_dict(d)
 
@@ -135,7 +136,7 @@ def predict(responses):
 
 def update_quiz(form, id):
     cur = get_db().cursor()
-    sql = "update encuestas set candidato_elegido=?" "where id=?;"
+    sql = "update encuestas set candidato_elegido=? where id=?;"
 
     candidato = int(form["candidato"])
     cur.execute(sql, (candidato, id))
@@ -144,7 +145,7 @@ def update_quiz(form, id):
 def save_response(form, predicted_candidate_id):
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
-    sql = "insert into encuestas('fecha','candidato_predicho')" "values(?,?);"
+    sql = "insert into encuestas('fecha','candidato_predicho') values(?,?);"
     res = cur.execute(sql, (fecha, predicted_candidate_id))
     id_encuesta = int(res.lastrowid)
 

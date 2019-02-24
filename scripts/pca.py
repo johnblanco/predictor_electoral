@@ -4,30 +4,27 @@ from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
 import json
 
-df = pd.read_csv("../csvs/encuestas.csv")
-cand_data = json.loads(open("../predictor_pol/candidatos.json", "r").read())
+
+QUESTIONS_COUNT = 26
+
+with open("../predictor_pol/candidatos.json", "r") as f:
+    CAND_DATA = json.load(f)
 
 
 def get_party(id):
-    for p in cand_data:
-        for c in p["candidates"]:
-            if c["id"] == id:
-                return p["party"]
+    for party in CAND_DATA:
+        for candidate in party["candidates"]:
+            if candidate["id"] == id:
+                return party["party"]
     return "n/a"
 
 
 def get_name(id):
-    for p in cand_data:
-        for c in p["candidates"]:
-            if c["id"] == id:
-                return c["name"]
+    for party in CAND_DATA:
+        for candidate in party["candidates"]:
+            if candidate["id"] == id:
+                return candidate["name"]
     return "n/a"
-
-
-df["partido"] = df.candidato.apply(get_party)
-df["nombre"] = df.candidato.apply(get_name)
-
-respuestas = pd.read_csv("../csvs/respuestas_encuestas.csv")
 
 
 def resp(id_encuesta, id_pregunta):
@@ -38,40 +35,45 @@ def resp(id_encuesta, id_pregunta):
     return s.get_values()[0]
 
 
-for i in range(1, 27):
-    df["resp_{}".format(i)] = df.id.apply(lambda x: resp(x, i))
+if __name__ == "__main__":
+    df = pd.read_csv("../csvs/encuestas.csv")
 
-features = []
-for i in range(1, 27):
-    features.append("resp_{}".format(i))
+    df["partido"] = df.candidato.apply(get_party)
+    df["nombre"] = df.candidato.apply(get_name)
 
+    respuestas = pd.read_csv("../csvs/respuestas_encuestas.csv")
 
-scores_candidatos = []
-for n in range(2, 20):
-    pca = PCA(n_components=n)
-    pca.fit(df[features])
-    X = pca.transform(df[features])
-    y = df.candidato
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-    for k in range(1, 15):
-        modelo = KNeighborsClassifier(n_neighbors=k)
-        modelo.fit(X_train, y_train)
-        s = modelo.score(X_test, y_test)
-        scores_candidatos.append([s, n, k])
+    for i in range(1, QUESTIONS_COUNT + 1):
+        df[f"resp_{i}"] = df.id.apply(lambda x: resp(x, i))
 
-print(max(scores_candidatos))
+    features = [f"resp_{i}" for i in range(1, QUESTIONS_COUNT + 1)]
 
-scores_partidos = []
-for n in range(2, 20):
-    pca = PCA(n_components=n)
-    pca.fit(df[features])
-    X = pca.transform(df[features])
-    y = df.partido
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
-    for k in range(1, 15):
-        modelo = KNeighborsClassifier(n_neighbors=k)
-        modelo.fit(X_train, y_train)
-        s = modelo.score(X_test, y_test)
-        scores_partidos.append([s, n, k])
+    scores_candidatos = []
+    for n in range(2, 20):
+        pca = PCA(n_components=n)
+        pca.fit(df[features])
+        X = pca.transform(df[features])
+        y = df.candidato
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+        for k in range(1, 15):
+            modelo = KNeighborsClassifier(n_neighbors=k)
+            modelo.fit(X_train, y_train)
+            s = modelo.score(X_test, y_test)
+            scores_candidatos.append([s, n, k])
 
-print(max(scores_partidos))
+    print(max(scores_candidatos))
+
+    scores_partidos = []
+    for n in range(2, 20):
+        pca = PCA(n_components=n)
+        pca.fit(df[features])
+        X = pca.transform(df[features])
+        y = df.partido
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+        for k in range(1, 15):
+            modelo = KNeighborsClassifier(n_neighbors=k)
+            modelo.fit(X_train, y_train)
+            s = modelo.score(X_test, y_test)
+            scores_partidos.append([s, n, k])
+
+    print(max(scores_partidos))

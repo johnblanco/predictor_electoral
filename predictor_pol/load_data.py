@@ -18,6 +18,8 @@ with open(PATH + "preguntas.json") as f:
             )
             index += 1
 
+QUESTIONS_COUNT = sum([len(category['questions']) for category in PREGUNTAS])
+
 with open(PATH + "candidatos.json") as f:
     CANDIDATOS = []
     file_parties = json.load(f)
