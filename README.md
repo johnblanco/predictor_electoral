@@ -17,6 +17,8 @@ http://www.aquienvoto.uy
 
 [El observador](https://www.elobservador.com.uy/nota/a-quien-voto-el-juego-viral-y-un-viejo-debate-que-factores-inciden-en-el-cuarto-secreto--201922211202)
 
+[Justicia infinita](https://uy.radiocut.fm/audiocut/hablan-de-aquienvotouy-en-ji/)
+
 
 ### Algunos tweets interesantes
 
