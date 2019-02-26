@@ -19,6 +19,8 @@ http://www.aquienvoto.uy
 
 [Justicia infinita](https://uy.radiocut.fm/audiocut/hablan-de-aquienvotouy-en-ji/)
 
+[Hoy no es un día cualquiera](https://uy.radiocut.fm/audiocut/columna-economia-digital-26022019/#)
+
 
 ### Algunos tweets interesantes
 
