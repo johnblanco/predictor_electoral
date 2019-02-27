@@ -21,6 +21,8 @@ http://www.aquienvoto.uy
 
 [Hoy no es un día cualquiera](https://uy.radiocut.fm/audiocut/columna-economia-digital-26022019/#)
 
+[De arriba un rayo](https://uy.radiocut.fm/audiocut/aquienvotouy-en-de-arriba-un-rayo/)
+
 
 ### Algunos tweets interesantes
 
