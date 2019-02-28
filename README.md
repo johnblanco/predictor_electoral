@@ -26,6 +26,8 @@ http://www.aquienvoto.uy
 
 ### Algunos tweets interesantes
 
+https://twitter.com/QuanamCorp/status/1100493578210607109
+
 https://twitter.com/gbudino/status/1098414277029965824
 
 https://twitter.com/Martinjbueno/status/1098554876362133506
