@@ -11,7 +11,7 @@ from encuestas where candidato_elegido is not null;
 cur = db.cursor()
 rows = cur.execute(sql).fetchall()
 
-with open("encuestas.csv", "w") as f:
+with open("../csvs/encuestas.csv", "w") as f:
     f.write("id,candidato,fecha\n")
     for r in rows:
         f.write(f"{r[0]},{r[1]},{r[2]}\n")
@@ -25,7 +25,7 @@ from respuestas_encuestas;
 cur = db.cursor()
 rows = cur.execute(sql).fetchall()
 
-with open("respuestas_encuestas.csv", "w") as f:
+with open("../csvs/respuestas_encuestas.csv", "w") as f:
     f.write("id_encuesta,id_pregunta,respuesta\n")
     for r in rows:
         f.write(f"{r[0]},{r[1]},{r[2]}\n")
