@@ -7,6 +7,11 @@ from sklearn.linear_model import LogisticRegression
 
 df = pd.read_csv("../csvs/data.csv")
 df_train, df_test = train_test_split(df, test_size=0.20)
-features = ['1', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19','2', '20', '21', '22', '23', '24', '25', '26', '3', '4', '5', '6', '7','8', '9']
-clf = LogisticRegression(random_state=0, solver='lbfgs',multi_class='multinomial',max_iter=700).fit(df_train[features], df_train.candidatoId)
+l = list(range(1, 27))
+features = list(map(lambda x: str(x), l))
+
+
+clf = LogisticRegression(
+    random_state=0, solver="lbfgs", multi_class="multinomial", max_iter=700
+).fit(df_train[features], df_train.candidatoId)
 joblib.dump(clf, "../predictor_pol/candidate_model2.joblib")
