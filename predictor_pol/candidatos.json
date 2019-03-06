@@ -90,17 +90,9 @@
         "party": "Partido Nacional",
         "candidates": [
         	{
-        		"name": "Álvaro Germano",
-        		"id": 7
-        	},
-        	{
         		"name": "Carlos Iafigliola",
         		"id": 8
         	},
-            {
-                "name": "Carlos Techera",
-                "id": 25
-            },
         	{
         		"name": "Enrique Antía",
         		"id": 6
@@ -147,6 +139,15 @@
         	{
         		"name":"Gonzalo Abella",
         		"id": 19
+        	}
+        ]
+    },
+    {
+        "party": "Partido de Todos",
+        "candidates": [
+        	{
+        		"name":"Carlos Techera",
+        		"id": 25
         	}
         ]
     }
