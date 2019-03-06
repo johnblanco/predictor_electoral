@@ -7,8 +7,7 @@ from sklearn.linear_model import LogisticRegression
 
 df = pd.read_csv("../csvs/data.csv")
 df_train, df_test = train_test_split(df, test_size=0.20)
-l = list(range(1, 27))
-features = list(map(lambda x: str(x), l))
+features = [str(x) for x in range(1, 27)]
 
 
 clf = LogisticRegression(
