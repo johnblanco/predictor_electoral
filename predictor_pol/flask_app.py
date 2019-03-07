@@ -114,8 +114,7 @@ def validate(form):
 
 
 def predict(responses):
-    candidate_model = joblib.load(PATH + "candidate_model.joblib")
-    pca = joblib.load(PATH + "pca.joblib")
+    candidate_model = joblib.load(PATH + "candidate_model2.joblib")
 
     d = {}
     for i in range(1, QUESTIONS_COUNT + 1):
@@ -123,8 +122,7 @@ def predict(responses):
 
     df = pd.DataFrame.from_dict(d)
 
-    transformed = pca.transform(df)
-    candidate_id = candidate_model.predict(transformed)
+    candidate_id = candidate_model.predict(df)
 
     candidate_name = ""
     for party in CANDIDATOS:
