@@ -9,6 +9,7 @@ ipython = "*"
 ipdb = "*"
 graphviz = "*"
 black = "*"
+nbstripout = "*"
 
 [packages]
 flask = "*"

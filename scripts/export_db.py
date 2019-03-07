@@ -25,7 +25,7 @@ rows = cur.execute(sql).fetchall()
 
 with open("../csvs/data.csv", "w") as f:
     all_questions = ",".join([str(i) for i in range(1, NUM_QUESTIONS + 1)])
-    f.write(f"id,candidato,{all_questions},fecha\n")
+    f.write(f"id,candidatoId,{all_questions},fecha\n")
 
     for r in rows:
         id_encuesta = r[0]
