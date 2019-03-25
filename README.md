@@ -23,6 +23,8 @@ http://www.aquienvoto.uy
 
 [De arriba un rayo](https://uy.radiocut.fm/audiocut/aquienvotouy-en-de-arriba-un-rayo/)
 
+[Radio Camacuá](http://www.radiocamacua.uy/2019/03/a-quien-voto-machine-learning-y-elecciones/)
+
 
 ### Algunos tweets interesantes
 
