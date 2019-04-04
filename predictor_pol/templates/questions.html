@@ -39,7 +39,7 @@
         {% for question in category.questions %}
         <div class="row question mb-4">
             <div class="col-md-5">
-                <label class="extra-padding">{{question.text}}</label>
+                <label class="extra-padding">{{question.text|safe}}</label>
             </div>
             <div class="col-md-7 answer-buttons">
                 {% for answer in respuestas %}

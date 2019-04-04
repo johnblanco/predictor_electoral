@@ -2,37 +2,37 @@
   {
     "subject": "grupo1",
     "questions": [
-      "Una teoría económica postula que una consecuencia del aumento del nivel de empleo es el aumento de la inflación. ¿Qué tan de acuerdo o en desacuerdo estás con que hay que priorizar el empleo por sobre la inflación?",
-      "Considerando la Ley de Inclusión Financiera en todos sus componentes. ¿Qué tan de acuerdo o en desacuerdo estás con la Ley de Inclusión Financiera, tal como se aplica en la actualidad?",
-      "Uruguay ha sido históricamente un país agroexportador, con una economía basada en el sector primario (materias primas). ¿Qué tan de acuerdo o en desacuerdo estás con que el campo debe seguir siendo el principal motor productivo del país?",
-      "Se presentó un proyecto de ley que limita el precio de los alquileres y regular la renovación de contratos. ¿Qué tan de acuerdo o en desacuerdo estás con que el precio de los alquileres esté regulado por ley?",
-      "Durante 2018 fue discutida la posibilidad de firmar un Tratado de Libre Comercio (TLC) con China, y el Mercosur en su conjunto negocia uno con la Unión Europea. ¿Qué tan de acuerdo o en desacuerdo estás con que Uruguay firme Tratados de Libre Comercio? ",
-      "En Uruguay y en el mundo existe una tensión entre el desarrollo económico y el cuidado del medio ambiente, y sobre cuál de los dos priorizar. ¿Qué tan de acuerdo o en desacuerdo estás con que es más importante el cuidado del medio ambiente que el crecimiento económico?"
+      "Una teoría económica postula que una consecuencia del aumento del nivel de empleo es el aumento de la inflación. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>hay que priorizar el empleo por sobre la inflación</b>?",
+      "Considerando la Ley de Inclusión Financiera en todos sus componentes. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la Ley de Inclusión Financiera, tal como se aplica en la actualidad</b>?",
+      "Uruguay ha sido históricamente un país agroexportador, con una economía basada en el sector primario (materias primas). ¿Qué tan de acuerdo o en desacuerdo estás con que <b>el campo debe seguir siendo el principal motor productivo del país</b>?",
+      "Se presentó un proyecto de ley que limita el precio de los alquileres y regular la renovación de contratos. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>el precio de los alquileres esté regulado por ley</b>?",
+      "Durante 2018 fue discutida la posibilidad de firmar un Tratado de Libre Comercio (TLC) con China, y el Mercosur en su conjunto negocia uno con la Unión Europea. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>Uruguay firme Tratados de Libre Comercio</b>?",
+      "En Uruguay y en el mundo existe una tensión entre el desarrollo económico y el cuidado del medio ambiente, y sobre cuál de los dos priorizar. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>es más importante el cuidado del medio ambiente que el crecimiento económico</b>?"
     ]
   },
   {
     "subject": "grupo2",
     "questions": [
-      "Una de las medidas utilizadas por los sindicatos es la ocupación del lugar de trabajo. ¿Qué tan de acuerdo o en desacuerdo estás con la ocupación del lugar de trabajo como medida sindical?  ",
-      "La reforma tributaria de 2006 llevó a Uruguay a un régimen de tributación personal progresivo, esto significa que un ingreso mayor debe pagar más impuestos. ¿Qué tan de acuerdo o en desacuerdo estás con el concepto de que pague más el que gana más?",
-      "El tamaño y el costo del estado suelen estar en las discusiones sobre la eficiencia del Estado. ¿Qué tan de acuerdo o en desacuerdo estás con que un Estado “grande” puede ser eficiente?",
-      "El costo de la canasta básica de alimentos, así como los precios en general, ha sido un tema muy presente en el sistema político. ¿Qué tan de acuerdo o en desacuerdo estás con que el Estado debe incidir en la formación de precios de los alimentos, ya sea fijando topes o interviniendo de otras formas?",
-      "Muchas personas creen que la competitividad de las industrias nacionales es clave para el país. ¿Qué tan de acuerdo o en desacuerdo estás con que las industrias nacionales deben protegerse a través de impuestos a las importaciones?",
-      "Uruguay pasó de ser un país de tendencia migratoria negativa, a un país receptor de inmigrantes en los últimos años. ¿Qué tan de acuerdo o en desacuerdo estás con que los inmigrantes sean beneficiarios de las políticas sociales?",
-      "Junto a las elecciones presidenciales se realizará un plebiscito que -entre otras cosas- propone el despliegue de fuerzas militares para tareas de seguridad pública. ¿Qué tan de acuerdo o en desacuerdo estás con la creación de una guardia civil integrada por militares en tareas de seguridad interna?"
+      "Una de las medidas utilizadas por los sindicatos es la ocupación del lugar de trabajo. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la ocupación del lugar de trabajo como medida sindical</b>?",
+      "La reforma tributaria de 2006 llevó a Uruguay a un régimen de tributación personal progresivo, esto significa que un ingreso mayor debe pagar más impuestos. ¿Qué tan de acuerdo o en desacuerdo estás con <b>el concepto de que pague más el que gana más</b>?",
+      "El tamaño y el costo del estado suelen estar en las discusiones sobre la eficiencia del Estado. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>un Estado “grande” puede ser eficiente</b>?",
+      "El costo de la canasta básica de alimentos, así como los precios en general, ha sido un tema muy presente en el sistema político. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>el Estado debe incidir en la formación de precios de los alimentos, ya sea fijando topes o interviniendo de otras formas</b>?",
+      "Muchas personas creen que la competitividad de las industrias nacionales es clave para el país. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>las industrias nacionales deben protegerse a través de impuestos a las importaciones</b>?",
+      "Uruguay pasó de ser un país de tendencia migratoria negativa, a un país receptor de inmigrantes en los últimos años. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>los inmigrantes sean beneficiarios de las políticas sociales</b>?",
+      "Junto a las elecciones presidenciales se realizará un plebiscito que -entre otras cosas- propone el despliegue de fuerzas militares para tareas de seguridad pública. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la creación de una guardia civil integrada por militares en tareas de seguridad interna</b>?"
 
     ]
   },
   {
     "subject": "grupo3",
     "questions": [
-      "Como parte de las estrategias de combate al crimen y al narcotráfico, el gobierno uruguayo realiza escuchas telefónicas, intervención de correos electrónicos/redes sociales con orden judicial, cámaras de seguridad, registro de cédulas, reconocimiento facial, etc. ¿Qué tan de acuerdo o en desacuerdo estás con que las personas que no tienen nada que esconder, no tienen nada de qué preocuparse?",
-      "Recientemente, el Parlamento aprobó un cambio en el Código del Proceso Penal según el cual un agravante de los homicidios es el femicidio, es decir aquel asesinato que se hace contra la mujer en su condición de tal. ¿Qué tan de acuerdo o en desacuerdo estás con la figura del femicidio como agravante de los homicidios?",
-      "En general, un punto muy discutido respecto a la función de las cárceles en la sociedad es si éstas sirven como castigo o como herramienta para la rehabilitación. ¿Qué tan de acuerdo o en desacuerdo estás con que el rol principal de las cárceles debería ser el castigo?",
-      "En 2018, el Parlamento uruguayo aprobó la Ley Integral para las Personas Trans. ¿Qué tan de acuerdo o en desacuerdo estás con la aprobación de esta ley?",
-      "Desde 2009 en nuestro país existe una normativa por la cual las listas a los cargos legislativos nacionales y subnacionales deben incluir al menos una mujer cada tres lugares. Esta es la llamada “Ley de Cuotas”. ¿Qué tan de acuerdo o en desacuerdo estás con la existencia de cuotas para los cargos electivos? ",
-      "La educación es uno de los principales asuntos de la agenda política del país, principalmente en relación a la tensión entre recursos y gestión. ¿Qué tan de acuerdo o en desacuerdo estás con que los principales problemas de la educación se resuelven con más recursos económicos?",
-      "Las asignaciones familiares implican una ayuda económica a familias de menores ingresos con niños y niñas, jóvenes y/o personas con discapacidad a cargo. A cambio, el Estado exige que los menores concurran a escuelas o liceos y que se realicen chequeos médicos periódicos. ¿Qué tan de acuerdo o en desacuerdo estás con exigir contrapartidas a cambio de las asignaciones familiares? "
+      "Como parte de las estrategias de combate al crimen y al narcotráfico, el gobierno uruguayo realiza escuchas telefónicas, intervención de correos electrónicos/redes sociales con orden judicial, cámaras de seguridad, registro de cédulas, reconocimiento facial, etc. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>las personas que no tienen nada que esconder, no tienen nada de qué preocuparse</b>?",
+      "Recientemente, el Parlamento aprobó un cambio en el Código del Proceso Penal según el cual un agravante de los homicidios es el femicidio, es decir aquel asesinato que se hace contra la mujer en su condición de tal. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la figura del femicidio como agravante de los homicidios</b>?",
+      "En general, un punto muy discutido respecto a la función de las cárceles en la sociedad es si éstas sirven como castigo o como herramienta para la rehabilitación. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>el rol principal de las cárceles debería ser el castigo</b>?",
+      "En 2018, el Parlamento uruguayo aprobó la Ley Integral para las Personas Trans. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la aprobación de esta ley</b>?",
+      "Desde 2009 en nuestro país existe una normativa por la cual las listas a los cargos legislativos nacionales y subnacionales deben incluir al menos una mujer cada tres lugares. Esta es la llamada “Ley de Cuotas”. ¿Qué tan de acuerdo o en desacuerdo estás con <b>la existencia de cuotas para los cargos electivos</b>?",
+      "La educación es uno de los principales asuntos de la agenda política del país, principalmente en relación a la tensión entre recursos y gestión. ¿Qué tan de acuerdo o en desacuerdo estás con que <b>los principales problemas de la educación se resuelven con más recursos económicos</b>?",
+      "Las asignaciones familiares implican una ayuda económica a familias de menores ingresos con niños y niñas, jóvenes y/o personas con discapacidad a cargo. A cambio, el Estado exige que los menores concurran a escuelas o liceos y que se realicen chequeos médicos periódicos. ¿Qué tan de acuerdo o en desacuerdo estás con <b>exigir contrapartidas a cambio de las asignaciones familiares</b>?"
     ]
   }
 ]
