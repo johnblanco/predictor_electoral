@@ -80,12 +80,12 @@ def main():
 
         if validate(session):
             predictions = predict(session)
-            answer_id = save_response(session, predictions["candidate_id"])
+            answer_id = save_response(session)
             session["answer_id"] = answer_id
 
             return render_template(
                 "success.html",
-                predicted_candidate_name=predictions["candidate_name"],
+                predictions=predictions,
                 candidatos=CANDIDATOS,
             )
         else:
@@ -114,22 +114,28 @@ def validate(form):
 
 
 def predict(responses):
-    candidate_model = joblib.load(PATH + "candidate_model2.joblib")
-
-    d = {}
-    for i in range(1, QUESTIONS_COUNT + 1):
-        d[f"resp_{i}"] = [responses[f"pregunta_{i}"]]
-
-    df = pd.DataFrame.from_dict(d)
-
-    candidate_id = candidate_model.predict(df)
-
+    # candidate_model = joblib.load(PATH + "candidate_model2.joblib")
+    #
+    # d = {}
+    # for i in range(1, QUESTIONS_COUNT + 1):
+    #     d[f"resp_{i}"] = [responses[f"pregunta_{i}"]]
+    #
+    # df = pd.DataFrame.from_dict(d)
+    #
+    # candidate_id = candidate_model.predict(df)
+    #
     candidate_name = ""
+    candidate_id = 20 #test
     for party in CANDIDATOS:
         for candidate in party["candidates"]:
             if candidate["id"] == candidate_id:
                 candidate_name = candidate["name"]
-    return {"candidate_id": candidate_id, "candidate_name": candidate_name}
+    politicians_model_response = {'candidate_id': candidate_id, 'candidate_name': candidate_name}
+    #en la primer salida vamos a tener solo politicians_model y None en people_model porque hay que reentrenar con las
+    #nuevas preguntas
+    res = {'people_model': None, "politicians_model": politicians_model_response}
+
+    return res
 
 
 def update_quiz(form, id):
@@ -140,11 +146,11 @@ def update_quiz(form, id):
     cur.execute(sql, (candidato, id))
 
 
-def save_response(form, predicted_candidate_id):
+def save_response(form):
     fecha = datetime.datetime.now().isoformat()
     cur = get_db().cursor()
-    sql = "insert into encuestas('fecha','candidato_predicho') values(?,?);"
-    res = cur.execute(sql, (fecha, predicted_candidate_id))
+    sql = "insert into encuestas('fecha','version') values(?,?);"
+    res = cur.execute(sql, (fecha, 2))
     id_encuesta = int(res.lastrowid)
 
     for id_pregunta in _get_question_keys(PREGUNTAS):

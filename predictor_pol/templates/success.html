@@ -17,7 +17,11 @@
         Gracias por completar el cuestionario.
     </div>
 
-    <h2 class="mb-5">El candidato recomendado es <span class="badge badge-secondary">{{predicted_candidate_name}}</span></h2>
+    <h2 class="mb-5">El candidato que contesto más parecido a vos es <span class="badge badge-secondary">{{ predictions['politicians_model']['candidate_name'] }}</span></h2>
+
+    {% if predictions['people_model'] %}
+        <h2 class="mb-5">La gente que piensa más parecido a vos elige a <span class="badge badge-secondary">{{ predictions['people_model']['candidate_name'] }}</span></h2>
+    {% endif %}
 
     <div class="row justify-content-md-center start">
         <div class="col-md-auto">
