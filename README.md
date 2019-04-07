@@ -1,7 +1,6 @@
 http://www.aquienvoto.uy
 
 ---
-
 ¿A quién votan los que piensan más parecido a vos?
 
 ---

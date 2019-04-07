@@ -19,10 +19,10 @@
 
         <div class="alert alert-secondary explanation" role="alert">
             <p>
-                Elegí respuestas del 1 al 7.
+                Elegí respuestas del 1 al 5.
             </p>
             <p>
-                1 es XX, 4 es XXX y 7 es XXX.
+                1 es en desacuerdo, 3 es neutral (o no lo sé) y 5 es totalmente de acuerdo.
             </p>
         </div>
     </div>
@@ -32,16 +32,16 @@
 
         <div class="row">
             {% for category in preguntas %}
-            <h4 class="questions-title"><span>{{page}}/{{num_categories}}</span></h4>
+            <h4 class="questions-title"><span>Categoría {{page}}/{{num_categories}}:</span> {{category.subject}}</h4>
         </div>
 
 
         {% for question in category.questions %}
         <div class="row question mb-4">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <label class="extra-padding">{{question.text}}</label>
             </div>
-            <div class="col-md-7 answer-buttons">
+            <div class="col-md-6 answer-buttons">
                 {% for answer in respuestas %}
                 <div class="custom-control custom-radio">
 
