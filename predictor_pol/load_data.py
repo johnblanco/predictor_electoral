@@ -1,10 +1,10 @@
 import json
 import os
 
-PATH = os.path.dirname(os.path.realpath(__file__)) + "/"
+PATH = os.path.dirname(os.path.realpath(__file__)) + "/json_data/"
 
 
-DATABASE = PATH + "predictor_prod.db"
+DATABASE = PATH + "../predictor_prod.db"
 with open(PATH + "preguntas.json") as f:
     PREGUNTAS = []
     # create the dict structure for the questions constant
@@ -19,6 +19,10 @@ with open(PATH + "preguntas.json") as f:
             index += 1
 
 QUESTIONS_COUNT = sum([len(category["questions"]) for category in PREGUNTAS])
+
+QUESTION_KEYS = [
+    question["id"] for category in PREGUNTAS for question in category["questions"]
+]
 
 with open(PATH + "candidatos.json") as f:
     CANDIDATOS = []
