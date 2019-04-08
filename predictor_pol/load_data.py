@@ -40,3 +40,4 @@ with open(PATH + "respuestas.json") as f:
 with open(PATH + "secrets.json") as f:
     secrets = json.load(f)
     RECAPTCHA_SECRET_KEY = secrets.get("RECAPTCHA_SECRET_KEY")
+    RECAPTCHA_SITE_KEY = secrets.get("RECAPTCHA_SITE_KEY")

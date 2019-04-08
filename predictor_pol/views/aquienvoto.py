@@ -11,6 +11,7 @@ from load_data import (
     QUESTION_KEYS,
     RESPUESTAS,
     RECAPTCHA_SECRET_KEY,
+    RECAPTCHA_SITE_KEY
 )
 from predict import predict
 
@@ -65,6 +66,7 @@ def main():
                         preguntas=[category],
                         respuestas=RESPUESTAS,
                         page=session["page"],
+                        recaptcha_site_key=RECAPTCHA_SITE_KEY
                     )
 
         if validate(session):
