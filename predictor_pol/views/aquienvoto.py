@@ -35,6 +35,15 @@ def validate_captcha(captcha_response):
 def count_rows():
     return db_manager.count_rows()
 
+@bp.route("/test_success", methods=["GET"])
+def test_success():
+    predictions = predict({})
+    return render_template(
+        "success.html", predictions=predictions, candidatos=CANDIDATOS
+    )
+
+
+
 
 @bp.route("/update_quiz", methods=["POST"])
 def add_mail():
