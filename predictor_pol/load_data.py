@@ -1,5 +1,6 @@
 import json
 import os
+import pandas as pd
 
 PATH = os.path.dirname(os.path.realpath(__file__)) + "/json_data/"
 
@@ -41,3 +42,5 @@ with open(PATH + "secrets.json") as f:
     secrets = json.load(f)
     RECAPTCHA_SECRET_KEY = secrets.get("RECAPTCHA_SECRET_KEY")
     RECAPTCHA_SITE_KEY = secrets.get("RECAPTCHA_SITE_KEY")
+
+RESPUESTAS_CANDIDATOS = pd.read_csv(os.path.abspath(os.path.join(os.path.dirname(os.path.realpath(__file__)) + "/", "../csvs/random_politicians_dataset.csv")))
