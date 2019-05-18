@@ -30,7 +30,7 @@ def predict(responses):
     politicians_model_response = {
         "candidate_id": coincidence_percentages[0][0],
         "candidate_name": coincidence_percentages[0][1],
-        "coincidence_percentage": coincidence_percentages[0][2]
+        "coincidence_percentage": round(coincidence_percentages[0][2])
     }
     print(politicians_model_response)
     # en la primer salida vamos a tener solo politicians_model y None en people_model
