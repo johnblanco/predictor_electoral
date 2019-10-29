@@ -25,19 +25,10 @@ http://www.aquienvoto.uy
 [De arriba un rayo](https://uy.radiocut.fm/audiocut/aquienvotouy-en-de-arriba-un-rayo/)
 
 
-### Algunos tweets interesantes
-
-https://twitter.com/QuanamCorp/status/1100493578210607109
-
-https://twitter.com/gbudino/status/1098414277029965824
-
-https://twitter.com/Martinjbueno/status/1098554876362133506
-
-
 ---
 
 * No se guardan datos sensibles del usuario.
-* Redes del equipo: [@johnblancott](https://twitter.com/johnblancott) en twitter, [@condeelmaster](https://www.instagram.com/condeelmaster/) en instagram  [Falta dirk]
+* Redes del equipo: [@johnblancott](https://twitter.com/johnblancott) en twitter, [@condeelmaster](https://www.instagram.com/condeelmaster/) en instagram
 * No trabajamos para ningún partido, ni vendemos servicios de ningún tipo a ningún candidato o partido.
 * Recordá que aquienvoto.uy es tan solo entretenimiento y la recomendación proviene de un modelo estadístico impreciso.
 * Seguimos en desarrollo. Pronto podremos dar mejores predicciones.
