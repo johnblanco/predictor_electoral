@@ -17,7 +17,9 @@
         Gracias por completar el cuestionario.
     </div>
 
-    <h2 class="mb-5">El candidato que contesto más parecido a vos es <span class="badge badge-secondary">{{ predictions['politicians_model']['candidate_name'] }}</span></h2>
+    <h2 class="mb-5">El candidato que contestó más parecido a vos es <span class="badge badge-secondary">{{ predictions['politicians_model']['candidate_name'] }}</span></h2>
+    <div id="gaugechartdiv" style="margin: auto;"></div>
+    <h6 style="text-align: center;">Porcentaje de coincidencia</h6>
 
     {% if predictions['people_model'] %}
         <h2 class="mb-5">La gente que piensa más parecido a vos elige a <span class="badge badge-secondary">{{ predictions['people_model']['candidate_name'] }}</span></h2>
@@ -96,6 +98,92 @@
 
 </div>
 
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// create chart
+var chart = am4core.create("gaugechartdiv", am4charts.GaugeChart);
+chart.innerRadius = am4core.percent(82);
+
+
+
+/**
+ * Axis for ranges
+ */
+
+var colorSet = new am4core.ColorSet();
+
+var axis2 = chart.xAxes.push(new am4charts.ValueAxis());
+axis2.min = 0;
+axis2.max = 100;
+axis2.renderer.innerRadius = 10
+axis2.strictMinMax = true;
+axis2.renderer.labels.template.disabled = true;
+axis2.renderer.ticks.template.disabled = true;
+axis2.renderer.grid.template.disabled = true;
+
+var range0 = axis2.axisRanges.create();
+range0.value = 0;
+range0.endValue = 50;
+range0.axisFill.fillOpacity = 1;
+range0.axisFill.fill = colorSet.getIndex(0);
+
+var range1 = axis2.axisRanges.create();
+range1.value = 50;
+range1.endValue = 100;
+range1.axisFill.fillOpacity = 1;
+range1.axisFill.fill = colorSet.getIndex(2);
+
+/**
+ * Label
+ */
+
+var label = chart.radarContainer.createChild(am4core.Label);
+label.isMeasured = false;
+label.fontSize = 20;
+label.x = am4core.percent(50);
+label.y = am4core.percent(100);
+label.horizontalCenter = "middle";
+label.verticalCenter = "bottom";
+
+
+/**
+ * Hand
+ */
+
+var hand = chart.hands.push(new am4charts.ClockHand());
+hand.axis = axis2;
+hand.innerRadius = am4core.percent(30);
+hand.startWidth = 5;
+hand.pin.disabled = true;
+hand.value = 0;
+
+hand.events.on("propertychanged", function(ev) {
+  range0.endValue = ev.target.value;
+  range1.value = ev.target.value;
+  axis2.invalidate();
+});
+
+setTimeout(() => {
+  var value = {{ predictions['politicians_model']['coincidence_percentage'] }};
+  label.text = value + "%";
+  var animation = new am4core.Animation(hand, {
+    property: "value",
+    to: value
+  }, 3000, am4core.ease.cubicOut).start();
+}, 1000);
+
+}); // end am4core.ready()
+</script>
 
 </body>
 </html>
