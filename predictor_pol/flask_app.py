@@ -86,7 +86,7 @@ def main():
             return render_template(
                 "success.html",
                 predicted_candidate_name=predictions["candidate_name"],
-                candidatos=CANDIDATOS,
+                candidates=CANDIDATOS,
             )
         else:
             # Esto también
@@ -125,10 +125,9 @@ def predict(responses):
     candidate_id = candidate_model.predict(df)
 
     candidate_name = ""
-    for party in CANDIDATOS:
-        for candidate in party["candidates"]:
-            if candidate["id"] == candidate_id:
-                candidate_name = candidate["name"]
+    for candidate in CANDIDATOS:
+        if candidate["id"] == candidate_id:
+            candidate_name = candidate["name"]
     return {"candidate_id": candidate_id, "candidate_name": candidate_name}
 
 
