@@ -98,15 +98,14 @@ def main():
 
 
 def validate_captcha(captcha_response):
-    return True
-    # if captcha_response is None:
-    #     return False
-    #
-    # validation_response = requests.post(
-    #     RECAPTCHA_URL,
-    #     data={"secret": RECAPTCHA_SECRET_KEY, "response": captcha_response},
-    # )
-    # return validation_response.json().get("success")
+    if captcha_response is None:
+        return False
+
+    validation_response = requests.post(
+        RECAPTCHA_URL,
+        data={"secret": RECAPTCHA_SECRET_KEY, "response": captcha_response},
+    )
+    return validation_response.json().get("success")
 
 
 def validate(form):
