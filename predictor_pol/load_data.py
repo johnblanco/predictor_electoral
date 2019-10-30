@@ -21,14 +21,7 @@ with open(PATH + "preguntas.json") as f:
 QUESTIONS_COUNT = sum([len(category["questions"]) for category in PREGUNTAS])
 
 with open(PATH + "candidatos.json") as f:
-    CANDIDATOS = []
-    file_parties = json.load(f)
-    for party in file_parties:
-        CANDIDATOS.append({"party": party["party"].title(), "candidates": []})
-        for candidate in party["candidates"]:
-            CANDIDATOS[-1]["candidates"].append(
-                {"name": candidate["name"].title(), "id": candidate["id"]}
-            )
+    CANDIDATOS = json.load(f)
 
 with open(PATH + "respuestas.json") as f:
     RESPUESTAS = json.load(f)

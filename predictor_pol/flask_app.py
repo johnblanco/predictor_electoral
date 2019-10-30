@@ -86,7 +86,7 @@ def main():
             return render_template(
                 "success.html",
                 predicted_candidate_name=predictions["candidate_name"],
-                candidatos=CANDIDATOS,
+                candidates=CANDIDATOS,
             )
         else:
             # Esto también
@@ -98,14 +98,15 @@ def main():
 
 
 def validate_captcha(captcha_response):
-    if captcha_response is None:
-        return False
-
-    validation_response = requests.post(
-        RECAPTCHA_URL,
-        data={"secret": RECAPTCHA_SECRET_KEY, "response": captcha_response},
-    )
-    return validation_response.json().get("success")
+    return True
+    # if captcha_response is None:
+    #     return False
+    #
+    # validation_response = requests.post(
+    #     RECAPTCHA_URL,
+    #     data={"secret": RECAPTCHA_SECRET_KEY, "response": captcha_response},
+    # )
+    # return validation_response.json().get("success")
 
 
 def validate(form):
@@ -125,10 +126,9 @@ def predict(responses):
     candidate_id = candidate_model.predict(df)
 
     candidate_name = ""
-    for party in CANDIDATOS:
-        for candidate in party["candidates"]:
-            if candidate["id"] == candidate_id:
-                candidate_name = candidate["name"]
+    for candidate in CANDIDATOS:
+        if candidate["id"] == candidate_id:
+            candidate_name = candidate["name"]
     return {"candidate_id": candidate_id, "candidate_name": candidate_name}
 
 

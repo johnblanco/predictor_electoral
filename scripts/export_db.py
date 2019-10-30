@@ -18,7 +18,7 @@ sql = """
         encuestas.fecha
     FROM respuestas_encuestas as resp
     JOIN encuestas ON encuestas.id == resp.id_encuesta
-    WHERE encuestas.candidato_elegido IS NOT NULL
+    WHERE encuestas.candidato_elegido in (4,9)
     GROUP BY resp.id_encuesta
     """
 rows = cur.execute(sql).fetchall()

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Recomendación de candidato 2019</title>
+    <title>Ballotage 2019</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -55,12 +55,8 @@
                     <option disabled="disabled" selected hidden value="">
                       -- Elige un candidato --
                     </option>
-                    {% for party in candidatos %}
-                        <optgroup label="{{party.party}}">
-                            {% for candidate in party.candidates %}
-                                    <option value="{{candidate.id}}"> {{candidate.name}} </option>
-                            {% endfor %}
-                        </optgroup>
+                    {% for candidate in candidates %}
+                        <option value="{{candidate.id}}"> {{candidate.name}} </option>
                     {% endfor %}
                 </select>
 

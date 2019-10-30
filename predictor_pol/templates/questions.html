@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recomendación de candidato 2019</title>
+  <title>Ballotage 2019</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -45,6 +45,16 @@
                 {% for answer in respuestas %}
                 <div class="custom-control custom-radio">
 
+                    {% if loop.index == 1 %}
+<input
+                            type="radio"
+                            checked="checked"
+                            name="{{question.id}}"
+                            id="{{question.id}}_{{loop.index}}"
+                            class="custom-control-input"
+                            value="{{loop.index}}"
+                            required>
+                    {% else %}
                     <input
                             type="radio"
                             name="{{question.id}}"
@@ -52,6 +62,9 @@
                             class="custom-control-input"
                             value="{{loop.index}}"
                             required>
+                    {% endif %}
+
+
 
                     <label
                             class="custom-control-label"
